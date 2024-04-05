@@ -1,0 +1,38 @@
+{
+    "district_ar": {
+        "label": "District [ar]",
+        "placeholder": "Enter district [ar]"
+    },
+    "district_en": {
+        "label": "District [en]",
+        "placeholder": "Enter district [en]"
+    },
+    "name_ar": {
+        "label": "Name [ar]",
+        "placeholder": "Enter name [ar]"
+    },
+    "name_en": {
+        "label": "Name [en]",
+        "placeholder": "Enter name [en]"
+    },
+    "name": {
+        "label": "Name",
+        "placeholder": "Enter name"
+    },
+    "driver_name": {
+        "label": "Driver Name",
+        "placeholder": "Enter Driver Name"
+    },
+    "currency": {
+        "label": "Currency",
+        "placeholder": "Enter the currency"
+    },
+    "email": {
+        "label": "Email",
+        "placeholder": "Enter the email"
+    },
+    "mobile": {
+        "label": "Mobile",
+        "placeholder": "Enter the mobile"
+    }
+}

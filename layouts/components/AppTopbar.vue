@@ -68,6 +68,17 @@ const isOutsideClicked = (event) => {
             <i class="pi pi-ellipsis-v"></i>
         </button>
 
+        <div>
+            <p class=" bg-midnight text-blue5">Title</p>
+        </div>
+
+        <IconField iconPosition="right">
+            <InputIcon>
+                <i class="pi pi-search" />
+            </InputIcon>
+            <InputText v-model="value1" placeholder="Search" />
+        </IconField>
+
         <div class="layout-topbar-menu" :class="topbarMenuClasses">
             <button @click="onTopBarMenuButton()" class="p-link layout-topbar-button">
                 <i class="pi pi-calendar"></i>

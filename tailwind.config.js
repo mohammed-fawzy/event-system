@@ -7,9 +7,60 @@ module.exports = {
     "./plugins/**/*.{js,ts}",
     "./app.vue",
     "./error.vue",
+    "./assets/presets/**/*.{js,vue,ts}",
   ],
   theme: {
-    extend: {},
+
+    fontFamily: {
+      poppins: ['Poppins', 'sans-serif'],
+      
+    },
+    fontSize: {
+      sm: '0.8rem',
+      base: '0.875rem',
+      xl: '1rem',
+      '2xl': '1.125rem',
+      '3xl': '1.953rem',
+      '4xl': '2.441rem',
+      '5xl': '3.052rem',
+    },
+    fontWeight: {
+      thin: '100',
+      hairline: '100',
+      extralight: '200',
+      light: '300',
+      normal: '400',
+      medium: '500',
+      semibold: '600',
+      bold: '700',
+      extrabold: '800',
+      'extra-bold': '800',
+      black: '900',
+    },
+    lineHeight: {
+      
+    },
+    extend: {
+      colors: {
+        "primary": "#043C50",
+        "blue1": "#eff0f2",
+        "blue2": "#d9dadf", 
+        "blue3": "#bbbcc6",
+        "blue4": "#9b9dac",
+        "blue5": "#7d8093",
+        "blue6": "#60647b",
+        "blue7": "#525569",
+        "blue8": "#444757",
+        "blue9": "#373946",
+        "blue10": "#2b2d37",  
+      },
+      spacing: {
+        
+      },
+      borderRadius: {
+      },
+
+    },
   },
   plugins: [],
 }

@@ -1,0 +1,38 @@
+{
+    "name_ar": {
+        "label": "اسم [ar]",
+        "placeholder": "أدخل الاسم [ar]"
+    },
+    "name_en": {
+        "label": "اسم [en]",
+        "placeholder": "أدخل الاسم [en]"
+    },
+    "district_ar": {
+        "label": "المنطقة [ar]",
+        "placeholder": "أدخل المنطقة [ar]"
+    },
+    "district_en": {
+        "label": "المنطقة [en]",
+        "placeholder": "أدخل المنطقة [en]"
+    },
+    "name": {
+        "label": "اسم",
+        "placeholder": "أدخل الاسم"
+    },
+    "driver_name": {
+        "label": "اسم السائق",
+        "placeholder": "أدخل اسم السائق"
+    },
+    "currency": {
+        "label": "العملة",
+        "placeholder": "أدخل العملة"
+    },
+    "email": {
+        "label": "البريد الإلكتروني",
+        "placeholder": "أدخل البريد الإلكتروني"
+    },
+    "mobile": {
+        "label": "رقم الهاتف",
+        "placeholder": "أدخل رقم الهاتف"
+    }
+}

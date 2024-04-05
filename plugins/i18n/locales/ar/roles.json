@@ -1,0 +1,10 @@
+{
+  "title": "الأدوار",
+  "roleList": "قائمة الأدوار",
+  "roleName": "اسم الدور",
+  "superVisors_num": "عدد المشرفين",
+  "addNewRole": "إضافة دور جديد",
+  "searchByRoleName": "البحث بإسم الدور",
+  "selectPermissions": "تحديد الصلاحيات:",
+  "permissions": "الصلاحيات"
+}

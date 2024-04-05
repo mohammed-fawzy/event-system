@@ -1,9 +1,6 @@
 <script setup>
 import AppMenu from '../components/AppMenu.vue';
 
-const logoUrl = computed(() => {
-    // return `@/assets/images/logo-white.png`;
-});
 </script>
 
 <template>

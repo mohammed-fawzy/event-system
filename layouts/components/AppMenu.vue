@@ -1,5 +1,7 @@
 <script setup>
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n();
 
 import AppMenuItem from '../components/AppMenuItem';
 
@@ -7,22 +9,20 @@ const model = ref([
     
     {
         items: [
-            { label: 'Country', icon: 'pi pi-fw pi-id-card', to: '/uikit/formlayout' },
-            { label: 'All Activity', icon: 'pi pi-fw pi-check-square', to: '/uikit/input' },
-            { label: 'Event Type', icon: 'pi pi-fw pi-bookmark', to: '/uikit/floatlabel' },
-            { label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', to: '/uikit/invalidstate' },
-            { label: 'Button', icon: 'pi pi-fw pi-mobile', to: '/uikit/button', class: 'rotated-icon' },
-            { label: 'Table', icon: 'pi pi-fw pi-table', to: '/uikit/table' },
-            { label: 'List', icon: 'pi pi-fw pi-list', to: '/uikit/list' },
-            { label: 'Tree', icon: 'pi pi-fw pi-share-alt', to: '/uikit/tree' },
-            { label: 'Panel', icon: 'pi pi-fw pi-tablet', to: '/uikit/panel' },
-            { label: 'Overlay', icon: 'pi pi-fw pi-clone', to: '/uikit/overlay' },
-            { label: 'Media', icon: 'pi pi-fw pi-image', to: '/uikit/media' },
-            { label: 'Menu', icon: 'pi pi-fw pi-bars', to: '/uikit/menu', preventExact: true },
-            { label: 'Message', icon: 'pi pi-fw pi-comment', to: '/uikit/message' },
-            { label: 'File', icon: 'pi pi-fw pi-file', to: '/uikit/file' },
-            { label: 'Chart', icon: 'pi pi-fw pi-chart-bar', to: '/uikit/charts' },
-            { label: 'Misc', icon: 'pi pi-fw pi-circle', to: '/uikit/misc' }
+            { label: t('sideMenu.country'), icon: 'pi pi-fw pi-id-card', to: '/uikit/formlayout' },
+            { label: t('sideMenu.allActivity'), icon: 'pi pi-fw pi-check-square', to: '/uikit/input' },
+            { label: t('sideMenu.eventType'), icon: 'pi pi-fw pi-bookmark', to: '/uikit/floatlabel' },
+            { label: t('sideMenu.accompEventType'), icon: 'pi pi-fw pi-exclamation-circle', to: '/uikit/invalidstate' },
+            { label: t('sideMenu.eventSpecialty'), icon: 'pi pi-fw pi-mobile', to: '/uikit/button', class: 'rotated-icon' },
+            { label: t('sideMenu.organizationLegal'), icon: 'pi pi-fw pi-table', to: '/uikit/table' },
+            { label: t('sideMenu.eventSeries'), icon: 'pi pi-fw pi-list', to: '/uikit/list' },
+            { label: t('sideMenu.listedType'), icon: 'pi pi-fw pi-share-alt', to: '/uikit/tree' },
+            { label: t('sideMenu.events'), icon: 'pi pi-fw pi-tablet', to: '/uikit/panel' },
+            { label: t('sideMenu.accomopEvent'), icon: 'pi pi-fw pi-clone', to: '/uikit/overlay' },
+            { label: t('sideMenu.eventBoothType'), icon: 'pi pi-fw pi-image', to: '/uikit/media' },
+            { label: t('sideMenu.eventSpace'), icon: 'pi pi-fw pi-bars', to: '/uikit/menu', preventExact: true },
+            { label: t('sideMenu.storage'), icon: 'pi pi-fw pi-comment', to: '/uikit/message' },
+            { label: t('sideMenu.requests'), icon: 'pi pi-fw pi-file', to: '/uikit/file' },
         ]
     }
 ]);
