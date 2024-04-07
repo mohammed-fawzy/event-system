@@ -4,24 +4,24 @@
   --active-color:#156D89;
   --table-head: #EAF1F3;
   --text-table-head: #023C50;
-  --primary: "#043C50";
-  --blue1: "#eff0f2";
-  --blue2: "#d9dadf"; 
-  --blue3: "#bbbcc6";
-  --blue4: "#9b9dac";
-  --blue5: "#7d8093";
-  --blue6: "#60647b";
-  --blue7: "#525569";
-  --blue8: "#444757";
-  --blue9: "#373946";
-  --blue10: "#2b2d37";
+  --primary: #043C50;
+  --blue1: #eff0f2;
+  --blue2: #d9dadf; 
+  --blue3: #bbbcc6;
+  --blue4: #9b9dac;
+  --blue5: #7d8093;
+  --blue6: #60647b;
+  --blue7: #525569;
+  --blue8: #444757;
+  --blue9: #373946;
+  --blue10: #2b2d37;
+  --shadow-color: rgba(56, 71, 109, 0.09);
 }
 
 /* General */
 $scale:16px;                    /* main font size */ 
 $borderRadius:8px;             /* border radius of layout element e.g. card, sidebar */ 
 $transitionDuration:.2s;        /* transition duration of layout elements e.g. sidebar, overlay menus */ 
-
 $gutter: 1rem; //for primeflex grid system
 @import './layout/layout.scss';
 @import 'primeicons/primeicons.css';

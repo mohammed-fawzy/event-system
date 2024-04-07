@@ -1,4 +1,4 @@
-{
+export default {
   "country": "Country",
   "allActivity": "All Activity",
   "eventType": "Event Type",

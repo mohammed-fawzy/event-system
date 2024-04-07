@@ -1009,7 +1009,7 @@ const _inlineRuntimeConfig = {
     },
     "i18n": {
       "baseUrl": "",
-      "defaultLocale": "",
+      "defaultLocale": "en",
       "defaultDirection": "ltr",
       "strategy": "prefix_except_default",
       "lazy": false,
@@ -1019,8 +1019,18 @@ const _inlineRuntimeConfig = {
       "skipSettingLocaleOnNavigate": false,
       "differentDomains": false,
       "trailingSlash": false,
-      "configLocales": [],
-      "locales": {},
+      "configLocales": [
+        "en",
+        "ar"
+      ],
+      "locales": {
+        "en": {
+          "domain": ""
+        },
+        "ar": {
+          "domain": ""
+        }
+      },
       "detectBrowserLanguage": {
         "alwaysRedirect": false,
         "cookieCrossOrigin": false,

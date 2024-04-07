@@ -1,4 +1,4 @@
-{
+export default {
   "id_number": "ID Number",
   "status": "Status",
   "tools": "Tools",

@@ -1,14 +1,14 @@
-{
+export default {
   "country": "الدولة",
   "allActivity": "كل النشاطات",
   "eventType": "نوع الحدث",
-  "accompEvent Type": "نوع الحدث الاكمالي",
+  "accompEventType": "نوع الحدث الاكمالي",
   "eventSpecialty": "تخصص الحدث",
   "organizationLegal": "المنظمة القانونية",
   "eventSeries": "تسلسل الحدث",
   "listedType": "Listed Type",
   "events": "الأحداث",
-  "accomop event": "Accomop event",
+  "accomopEvent": "Accomop event",
   "eventBoothType": "Event Booth Type",
   "eventSpace": "Event Space",
   "storage": "التخزين",

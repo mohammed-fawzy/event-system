@@ -1,4 +1,4 @@
-{
+export default {
   "id_number": "الرقم التعريفى",
   "status": "الحالة",
   "tools": "الأدوات",

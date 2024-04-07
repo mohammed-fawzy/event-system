@@ -47,7 +47,7 @@ module.exports = {
         "blue2": "#d9dadf", 
         "blue3": "#bbbcc6",
         "blue4": "#9b9dac",
-        "blue5": "#7d8093",
+        "blue5": "#7D8093",
         "blue6": "#60647b",
         "blue7": "#525569",
         "blue8": "#444757",
@@ -58,6 +58,15 @@ module.exports = {
         
       },
       borderRadius: {
+        'none': '0',
+        'sm': '0.125rem',
+        DEFAULT: '0.25rem',
+        'md': '0.375rem',
+        'lg': '0.5rem',
+        'xl': '0.75rem',
+        '2xl': '1rem',
+        '4xl': '2rem',
+        '5xl': '2.5rem',
       },
 
     },

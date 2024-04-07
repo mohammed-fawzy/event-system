@@ -3,7 +3,7 @@
   <div class="card flex justify-center">
       <Dropdown v-model="selectedCity" :options="cities" optionLabel="name" placeholder="Select a City" class="w-full md:w-[14rem]" />
   </div>
-  <p class=" bg-midnight text-blue5">Title</p>
+  <p class=" bg-midnight text-blue5">{{$t('sideMenu.country')}}</p>
 
 </template>
 

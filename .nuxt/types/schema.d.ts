@@ -87,9 +87,17 @@ declare module 'nuxt/schema' {
 
       trailingSlash: boolean,
 
-      configLocales: Array<any>,
+      configLocales: Array<string>,
 
-      locales: any,
+      locales: {
+         en: {
+            domain: any,
+         },
+
+         ar: {
+            domain: any,
+         },
+      },
 
       detectBrowserLanguage: {
          alwaysRedirect: boolean,
