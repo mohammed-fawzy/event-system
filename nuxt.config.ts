@@ -1,10 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', 'nuxt-primevue', '@nuxtjs/i18n'],
+  modules: ['@nuxtjs/tailwindcss', 'nuxt-primevue', '@nuxtjs/i18n', '@vee-validate/nuxt'],
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'ar'],
+    // locales: ['en', 'ar'],
     vueI18n: "./i18n/i18nConfig.js",
   },
   primevue: {

@@ -3,6 +3,7 @@ import en from './locales/en/index.js'
 export default {
   legacy: false,
   locale: 'en-US',
+  no_prefix : true,
   locales: [
     {
       code: 'en',

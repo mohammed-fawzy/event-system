@@ -58,7 +58,7 @@ export default {
         ]
     }),
     table: {
-        class: 'w-full border-spacing-0 border-separate'
+        class: 'w-full border-spacing-0 border-separate main-table rounded-r-lg'
     },
     thead: ({ context }) => ({
         class: [
@@ -100,7 +100,7 @@ export default {
     column: {
         headercell: ({ context, props }) => ({
             class: [
-                'font-bold',
+                'font-medium text-sm text-table-head bg-thead-bg',
 
                 // Position
                 { 'sticky z-20 border-b': props.frozen || props.frozen === '' },
@@ -152,7 +152,7 @@ export default {
                 'text-left',
 
                 // Shape
-                'border-0 border-b border-solid',
+                'border-0 border-b-8 border-solid border-table-border',
                 { 'first:border-l border-r border-b': context?.showGridlines },
                 { 'bg-surface-0 dark:bg-surface-800': parent.instance.frozenRow || props.frozen || props.frozen === '' },
 
@@ -1104,7 +1104,7 @@ export default {
     bodyrow: ({ context, props }) => ({
         class: [
             // Color
-            'dark:text-white/80',
+            'dark:text-white/80 bg-white',
             { 'bg-primary-50 text-primary-700 dark:bg-primary-400/30': context.selected },
             { 'bg-surface-0 text-surface-600 dark:bg-surface-800': !context.selected },
             { 'font-bold bg-surface-0 dark:bg-surface-800': props.frozenRow },

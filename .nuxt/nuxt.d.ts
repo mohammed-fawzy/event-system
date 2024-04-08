@@ -2,6 +2,7 @@
 /// <reference types="@nuxtjs/tailwindcss" />
 /// <reference types="nuxt-primevue" />
 /// <reference types="@nuxtjs/i18n" />
+/// <reference types="@vee-validate/nuxt" />
 /// <reference types="@nuxt/devtools" />
 /// <reference types="@nuxt/telemetry" />
 /// <reference types="nuxt" />

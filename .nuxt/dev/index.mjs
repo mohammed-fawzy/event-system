@@ -1019,18 +1019,8 @@ const _inlineRuntimeConfig = {
       "skipSettingLocaleOnNavigate": false,
       "differentDomains": false,
       "trailingSlash": false,
-      "configLocales": [
-        "en",
-        "ar"
-      ],
-      "locales": {
-        "en": {
-          "domain": ""
-        },
-        "ar": {
-          "domain": ""
-        }
-      },
+      "configLocales": [],
+      "locales": {},
       "detectBrowserLanguage": {
         "alwaysRedirect": false,
         "cookieCrossOrigin": false,

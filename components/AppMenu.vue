@@ -8,7 +8,7 @@ import AppMenuItem from '../components/AppMenuItem';
 const model = computed (() => {
     
     return [{ items: [
-            { label: t('sideMenu.country'), icon: 'pi pi-fw pi-id-card', to: '' },
+            { label: t('sideMenu.country'), icon: 'pi pi-fw pi-id-card', to: 'country' },
             { label: t('sideMenu.allActivity'), icon: 'pi pi-fw pi-check-square', to: '' },
             { label: t('sideMenu.eventType'), icon: 'pi pi-fw pi-bookmark', to: '' },
             { label: t('sideMenu.accompEventType'), icon: 'pi pi-fw pi-exclamation-circle', to: '' },

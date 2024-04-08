@@ -52,10 +52,13 @@ module.exports = {
         "blue7": "#525569",
         "blue8": "#444757",
         "blue9": "#373946",
-        "blue10": "#2b2d37",  
+        "blue10": "#2b2d37",
+        "table-head-text": "#023C50", 
+        "thead-bg": "#EAF1F3",
+        "table-border": "#fdfdfd"
       },
-      spacing: {
-        
+      height: {
+        '42': '2.625rem'
       },
       borderRadius: {
         'none': '0',

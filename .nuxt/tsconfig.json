@@ -146,6 +146,7 @@
     "../node_modules/@nuxtjs/tailwindcss/runtime",
     "../node_modules/nuxt-primevue/runtime",
     "../node_modules/@nuxtjs/i18n/runtime",
+    "../node_modules/@vee-validate/nuxt/runtime",
     "../node_modules/@nuxt/devtools/runtime",
     "../node_modules/@nuxt/telemetry/runtime",
     ".."
@@ -156,6 +157,7 @@
     "../node_modules/@nuxtjs/tailwindcss/runtime/server",
     "../node_modules/nuxt-primevue/runtime/server",
     "../node_modules/@nuxtjs/i18n/runtime/server",
+    "../node_modules/@vee-validate/nuxt/runtime/server",
     "../node_modules/@nuxt/devtools/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",
     "../dist",

@@ -5,6 +5,7 @@ export default {
             'rounded-lg',
             'shadow-lg',
             'border-0',
+            'bg-white',
 
             // Size
             'max-h-[90vh]',
@@ -34,8 +35,9 @@ export default {
     header: {
         class: [
             // Flexbox and Alignment
-            'flex items-center justify-between',
+            'font-medium',
             'shrink-0',
+            'text-center',
 
             // Spacing
             'p-6',
@@ -54,7 +56,7 @@ export default {
         class: ['font-bold text-lg']
     },
     icons: {
-        class: ['flex items-center']
+        class: ['flex items-center float-right']
     },
     closeButton: {
         class: [

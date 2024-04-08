@@ -4,6 +4,8 @@ import { useLayout } from '@/layouts/composables/layout';
 import { useRouter } from 'vue-router';
 import USA from '@/assets/images/flag/USA.png';
 import KSA from '@/assets/images/flag/ksa.png';
+const route = useRoute()
+
 const { locale, setLocale } = useI18n()
 
 // setLocale("ar-EG")
@@ -105,7 +107,7 @@ function onChangeLanguage () {
         </button>
 
         <div>
-            <p class="font-medium text-blue10">Title</p>
+            <p class="font-medium text-blue10 capitalize">{{ route.name }}</p>
         </div>
 
         <IconField iconPosition="right">
