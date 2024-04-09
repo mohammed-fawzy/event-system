@@ -4,11 +4,12 @@ import { useLayout } from '@/layouts/composables/layout';
 import { useRouter } from 'vue-router';
 import USA from '@/assets/images/flag/USA.png';
 import KSA from '@/assets/images/flag/ksa.png';
-const route = useRoute()
 
 const { locale, setLocale } = useI18n()
 
 // setLocale("ar-EG")
+
+
 
 
 const { layoutConfig, onMenuToggle } = useLayout();
@@ -107,14 +108,14 @@ function onChangeLanguage () {
         </button>
 
         <div>
-            <p class="font-medium text-blue10 capitalize">{{ route.name }}</p>
+            <p class="font-medium text-blue10 capitalize">{{  }}</p>
         </div>
 
         <IconField iconPosition="right">
             <InputIcon>
                 <i class="pi pi-search text-blue4" />
             </InputIcon>
-            <InputText v-model="value1" placeholder="Search" class="h-10 rounded-xl placeholder:text-blue4 placeholder:font-normal"/>
+            <InputText v-model="value1" placeholder="Search" class="h-10 rounded-xl bg-white placeholder:text-blue4 placeholder:font-normal"/>
         </IconField>
 
         <div class="layout-topbar-menu" :class="topbarMenuClasses">
@@ -126,12 +127,12 @@ function onChangeLanguage () {
                 <i class="pi pi-cog"></i>
                 <span>Settings</span>
             </button>
-            <button class="p-link layout-topbar-button">
+            <!-- <button class="p-link layout-topbar-button">
                 <i class="pi pi-sign-out"></i>
-            </button>
+            </button> -->
             <!-- change language with flag-->
 
-             <Dropdown v-model="selectedCountry" @change="onChangeLanguage" :options="countries" optionLabel="name" class="change-lanuage w-full md:w-[7rem] border-0 p-0 items-center ring-offset-0">
+             <Dropdown v-model="selectedCountry" @change="onChangeLanguage" :options="countries" optionLabel="name" class=" ml-3 change-lanuage w-full md:w-[7rem] border-0 p-0 items-center ring-offset-0">
             <template #value="slotProps">
                 <div v-if="slotProps.value" class="flex items-center">
                     <img :alt="slotProps.value.label" :src="slotProps.value.img" :class="`mr-2 flag flag-${slotProps.value.code.toLowerCase()}`" style="width: 20px; height: 13.4px" />
@@ -149,9 +150,9 @@ function onChangeLanguage () {
             </template>
         </Dropdown>
 
-        <NuxtLink v-for="locale in availableLocales" :key="locale.code" :to="switchLocalePath(locale.code)">{{
+        <!-- <NuxtLink v-for="locale in availableLocales" :key="locale.code" :to="switchLocalePath(locale.code)">{{
     locale.name
-  }}</NuxtLink>
+  }}</NuxtLink> -->
 </div>
 </div>
 </template>

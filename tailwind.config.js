@@ -55,10 +55,13 @@ module.exports = {
         "blue10": "#2b2d37",
         "table-head-text": "#023C50", 
         "thead-bg": "#EAF1F3",
-        "table-border": "#fdfdfd"
+        "table-border": "#fdfdfd",
+        "lable": "#606370",
+        "labelBG": "#ECECEE",
       },
       height: {
-        '42': '2.625rem'
+        '42': '2.625rem',
+        '54': '3.375rem',
       },
       borderRadius: {
         'none': '0',

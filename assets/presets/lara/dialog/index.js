@@ -53,7 +53,7 @@ export default {
         ]
     },
     title: {
-        class: ['font-bold text-lg']
+        class: ['font-medium text-2xl']
     },
     icons: {
         class: ['flex items-center float-right']
@@ -147,8 +147,8 @@ export default {
     content: ({ state, instance }) => ({
         class: [
             // Spacing
-            'px-6',
-            'pb-8',
+            'px-10',
+            'pb-11',
             'pt-0',
 
             // Shape

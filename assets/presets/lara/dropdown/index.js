@@ -4,12 +4,13 @@ export default {
             // Display and Position
             'inline-flex',
             'relative',
+            'text-blue-3',
 
             // Shape
             'rounded-md',
 
             // Color and Background
-            'bg-surface-0 dark:bg-surface-900',
+            'bg-labelBG',
             'border',
             { 'border-surface-300 dark:border-surface-600': !props.invalid },
 
@@ -33,7 +34,9 @@ export default {
     input: ({ props }) => ({
         class: [
             //Font
-            'font-sans',
+            'text-blue3',
+            'font-normal',
+            'text-base',
             'leading-none',
 
             // Display
@@ -44,7 +47,7 @@ export default {
             'bg-transparent',
             'border-0',
             { 'text-surface-800 dark:text-white/80': props.modelValue != undefined, 'text-surface-400 dark:text-surface-500': props.modelValue == undefined },
-            'placeholder:text-surface-400 dark:placeholder:text-surface-500',
+            'placeholder:text-blue-3 placeholder:text-base',
 
             // Sizing and Spacing
             'w-[1%]',
@@ -208,7 +211,7 @@ export default {
     filterinput: {
         class: [
             // Font
-            'font-sans',
+            '',
             'leading-none',
 
             // Sizing

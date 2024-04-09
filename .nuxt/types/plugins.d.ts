@@ -20,7 +20,8 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/nuxt-primevue/dist/runtime/plugin.client").default> &
   InjectionType<typeof import("../../node_modules/nuxt/dist/app/plugins/chunk-reload.client").default> &
   InjectionType<typeof import("../../node_modules/nuxt/dist/app/plugins/dev-server-logs.client").default> &
-  InjectionType<typeof import("../../node_modules/nuxt/dist/app/plugins/check-if-layout-used").default>
+  InjectionType<typeof import("../../node_modules/nuxt/dist/app/plugins/check-if-layout-used").default> &
+  InjectionType<typeof import("../../plugins/vee-validate").default>
 
 declare module '#app' {
   interface NuxtApp extends NuxtAppInjections { }

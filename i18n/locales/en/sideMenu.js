@@ -1,5 +1,6 @@
 export default {
   "country": "Country",
+  "citys": "City's",
   "allActivity": "All Activity",
   "eventType": "Event Type",
   "accompEventType": "Accomp Event Type",

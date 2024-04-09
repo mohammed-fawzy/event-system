@@ -11,12 +11,14 @@
           <Column field="category" header="Category"></Column>
           <Column field="quantity" header="Quantity"></Column>
       </DataTable>
-  </div>
+  </div> city
   <Form  :visible="visible" @close-modal="closeModal"/>
 </template>
 
 <script setup>
 import Form from './form.vue'
+import { computed } from 'vue';
+
 
 let routerName = computed(() => {
   return useRouter().currentRoute.value.name

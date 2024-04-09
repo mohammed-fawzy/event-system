@@ -1,5 +1,6 @@
 export default {
   "country": "الدولة",
+  "citys": "المدينة",
   "allActivity": "كل النشاطات",
   "eventType": "نوع الحدث",
   "accompEventType": "نوع الحدث الاكمالي",
