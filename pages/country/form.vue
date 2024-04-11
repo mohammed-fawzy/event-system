@@ -15,13 +15,18 @@
 
               <div class="flex flex-col basis-2/4">
                 <label for="Flag" class="text-xl font-medium text-label mb-4">Flag</label>
-                <Field as="Dropdown" v-model="theData.flag" name="Flag" :options="cities" optionLabel="name" placeholder="Select" rules="required" :invalid="errors.Flag"/>
-                <ErrorMessage name="Flag" class="text-red-500 mt-2"/>
+                <Field name="Flag" rules="required" v-model="theData.flag">
+                  <Dropdown v-model="theData.flag" name="Flag" :options="cities" optionLabel="name" placeholder="Select" :invalid="errors.Flag"/>
+                  <ErrorMessage name="Flag" class="text-red-500 mt-2"/>
+                </Field>
               </div>
             </div>
             <div class="flex flex-col mb-8">
               <label for="Nationality" class="text-xl font-medium text-label mb-4">Nationality</label>
-              <Dropdown v-model="selectedCity" :options="cities" optionLabel="name" placeholder="Select"/>
+              <Field name="Nationality" rules="required" v-model="theData.nationality">
+                <Dropdown v-model="theData.nationality" name="Nationality" :options="cities" optionLabel="name" placeholder="Select" :invalid="errors.Nationality" />
+                <ErrorMessage name="Nationality" class="text-red-500 mt-2"/>
+              </Field>
             </div>
             <div class="flex justify-center">
               <Button type="submit" class="bg-primary w-9/12 h-54 font-normal text-xl mt-4">Create</Button>
@@ -34,7 +39,7 @@
 </template>
 
 <script setup>
-
+import Dropdown from 'primevue/dropdown';
 const emit = defineEmits(['close-modal']);
 const closeModal = () => {
   console.log("closeModal");
@@ -47,6 +52,7 @@ defineProps({
   }
 });
 
+let nationality = ref({});
 let theData = ref({
   name: '',
   initials: '',
@@ -54,11 +60,13 @@ let theData = ref({
   nationality: ''
 })
 const cities = ref([
-  { name: 'New York', code: 'NY' },
-  { name: 'Rome', code: 'RM' },
-  { name: 'London', code: 'LDN' },
-  { name: 'Istanbul', code: 'IST' },
-  { name: 'Paris', code: 'PRS' }
+  { name: 'New York', code: 'NY', value: 'New York' },
+  { name: 'Rome', code: 'RM', value: 'Rome' },
+  { name: 'London', code: 'LDN', value: 'London' },
+  { name: 'Istanbul', code: 'IST', value: 'Istanbul' },
+  { name: 'Paris', code: 'PRS', value: 'Paris' }
 ]);
+
+
 
 </script>

@@ -19,7 +19,7 @@
             </div>
             <div class="flex flex-col mb-8">
               <label for="Nationality" class="text-xl font-medium text-label mb-4">Nationality</label>
-              <Dropdown v-model="selectedCity" :options="cities" optionLabel="Nationality" placeholder="Select"/>
+              <Dropdown v-model="selectedCity" :options="cities" optionLabel="name" placeholder="Select" class="p-dropdown-panel"/>
             </div>
             <div class="flex justify-center">
               <Button type="submit" class="bg-primary w-9/12 h-54 font-normal text-xl mt-4">Create</Button>
@@ -42,5 +42,11 @@ defineProps({
   }
 });
 
-
+const cities = ref([
+  { name: 'New York', code: 'NY' },
+  { name: 'Rome', code: 'RM' },
+  { name: 'London', code: 'LDN' },
+  { name: 'Istanbul', code: 'IST' },
+  { name: 'Paris', code: 'PRS' }
+]);
 </script>

@@ -93,7 +93,7 @@ export default {
     panel: {
         class: [
             // Position
-            'absolute top-0 left-0',
+            'absolute top-0 left-0 ',
 
             // Shape
             'border-0 dark:border',
@@ -101,7 +101,7 @@ export default {
             'shadow-md',
 
             // Color
-            'bg-surface-0 dark:bg-surface-800',
+            'bg-surface-0 dark:bg-surface-800 p-dropdown-panel',
             'text-surface-800 dark:text-white/80',
             'dark:border-surface-700'
         ]
