@@ -49,6 +49,9 @@ defineProps({
   visible: {
     type: Boolean,
     default: false
+  },
+  id: {
+    type: Number,
   }
 });
 

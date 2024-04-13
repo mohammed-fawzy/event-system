@@ -13,6 +13,7 @@
     "@nuxtjs/tailwindcss": "^6.11.4",
     "@vee-validate/nuxt": "^4.12.6",
     "@vee-validate/rules": "^4.12.6",
+    "defu": "^6.1.4",
     "nuxt": "^3.11.1",
     "primeicons": "^7.0.0",
     "primevue": "^3.50.0",
