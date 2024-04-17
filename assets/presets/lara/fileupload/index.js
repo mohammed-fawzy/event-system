@@ -49,7 +49,7 @@ export default {
 
             // Colors
             'text-white dark:text-surface-900',
-            'bg-primary-500 dark:bg-primary-400',
+            'bg-primary dark:bg-primary-400',
             'border-primary-500 dark:border-primary-400',
 
             // States

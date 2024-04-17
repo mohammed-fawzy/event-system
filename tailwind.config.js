@@ -42,7 +42,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        "primary": "#043C50",
+        "primary": "#043C50 !important",
         "blue1": "#eff0f2",
         "blue2": "#d9dadf", 
         "blue3": "#bbbcc6",
@@ -58,10 +58,12 @@ module.exports = {
         "table-border": "#fdfdfd",
         "lable": "#606370",
         "labelBG": "#ECECEE",
+        "bgcancel": "rgba(4, 60, 80, 0.12)"
       },
       height: {
         '42': '2.625rem',
         '54': '3.375rem',
+        '48': '3rem',
       },
       borderRadius: {
         'none': '0',

@@ -1,7 +1,9 @@
 export default {
   addNew: 'إضافة جديد',
-  id: 'ID',
+  id: 'الرقم',
   name: 'الاسم',
+  code: 'الكود',
+  country: 'الدولة',
   date: 'التاريخ',
   time: 'الوقت',
   flag: 'العلم',
@@ -28,5 +30,8 @@ export default {
   Successful: 'نجاح',
   CreatedSuccessfully: 'تم الانشاء بنجاح',
   UpdatedSuccessfully: 'تم التحديث بنجاح',
+  save: 'حفظ',
+  cancel: 'الغاء',
+  email: "البريد الإلكتروني",
 
 }

@@ -2,6 +2,8 @@ export default {
   addNew: "Add New",
   id: 'ID',
   name: 'Name',
+  code: 'Code',
+  country: 'Country',
   date: 'Date',
   time: 'Time',
   flag: 'Flag',
@@ -28,4 +30,7 @@ export default {
   Successful: 'Successful',
   CreatedSuccessfully: 'Created successfully',
   UpdatedSuccessfully: 'Updated successfully',
+  save: 'Save',
+  cancel: 'Cancel',
+  email: "Email",
 }
