@@ -115,7 +115,7 @@ function onChangeLanguage () {
             <InputIcon>
                 <i class="pi pi-search text-blue4" />
             </InputIcon>
-            <InputText v-model="value1" placeholder="Search" class="h-10 rounded-xl bg-white placeholder:text-blue4 placeholder:font-normal"/>
+            <InputText v-model="value1" :placeholder="$t('common.search')" class="h-10 rounded-xl bg-white placeholder:text-blue4 placeholder:font-normal"/>
         </IconField>
 
         <div class="layout-topbar-menu" :class="topbarMenuClasses">

@@ -1,5 +1,4 @@
 <script setup>
-import { useI18n } from '#imports'
 
 const { t } = useI18n();
 

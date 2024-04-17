@@ -1,5 +1,5 @@
 export default {
-  "country": "الدولة",
+  "country": "الدول",
   "citys": "المدينة",
   "allActivity": "كل النشاطات",
   "eventType": "نوع الحدث",
