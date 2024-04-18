@@ -3,18 +3,16 @@
   <div class="">
     <div class="flex justify-between items-center mb-10">
       <p class="font-medium text-blue10 text-xl capitalize">{{ $t(`sideMenu.${routerName}`)}}</p>
-      <Button :label="$t('common.addNew')" icon="pi pi-plus" class="bg-primary text-base h-42" @click="$router.push({path :'/persons/form'})"/>
+      <Button :label="$t('common.addNew')" icon="pi pi-plus" class="bg-primary text-base h-42" @click="visible = true"/>
     </div>
-      <DataTable :value="products" paginator :rows="5" @row-click="onRowClick">
+      <DataTable :value="products" paginator :rows="5">
           <Column field="id" :header="$t('common.id')"></Column>
           <Column field="name" :header="$t('common.name')"></Column>
-          <Column field="nationality" :header="$t('common.nationality')"></Column>
-          <Column field="idType" :header="$t('table.idType')"></Column>
-          <Column field="city" :header="$t('table.city')"></Column>
-          <Column field="street" :header="$t('table.streetAddress')"></Column>
-          <Column field="email" :header="$t('common.email')"></Column>
+          <Column field="idType" :header="$t('common.idType')"></Column>
+          <Column field="date" :header="$t('common.date')"></Column>
           <Column field="actions" :header="$t('common.action')">
             <template #body="slotProps">
+              <!-- <button class="p-link layout-menu-button layout-topbar-button" @click="console.log(slotProps.data.id)"> mm </button> -->
               <div class="flex justify-center">
                   <Button type="button" text class=" text-blue3" icon="pi pi-ellipsis-h" @click="toggle($event, slotProps.data.id)" aria-haspopup="true" aria-controls="overlay_menu" />
                   <Menu ref="menu" :model="editDeleteMenu" class="bg-white" id="overlay_menu" :popup="true" pt=""/>
@@ -23,20 +21,22 @@
           </Column>
       </DataTable>
   </div>
+  <Form :visible="visible" @close-modal="closeModal" :id="selectedId" @submit="refresh"/>
   <ConfirmDialog></ConfirmDialog>
 </template>
 
 <script setup>
+import Form from './form.vue'
 const { t } = useI18n();
-const router = useRouter();
+
+const { data, refresh } = useApi('/api/products');
+
+const confirm = useConfirm();
+const toast = useToast();
+
 let routerName = computed(() => {
   return useRouter().currentRoute.value.name 
 })
-
-// const { data, refresh } = useApi('/api/products');
-
-const toast = useToast();
-
 
 
 const menu = ref();
@@ -46,7 +46,7 @@ const editDeleteMenu = computed(() => [
     label: t('common.edit'),
     icon: 'pi pi-pencil',
     command: () => {
-      router.push({path :`/persons/form/${selectedId.value}`})
+      visible.value = true
     }
   },
   {
@@ -58,21 +58,20 @@ const editDeleteMenu = computed(() => [
     }
   }
 ]);
-const confirm = useConfirm();
-const deleteConfirm = () => {
+ const deleteConfirm = () => {
   confirm.require({
-    message: t('common.deleteConfirm'),
-    header: t('common.delete'),
-    rejectClass: 'p-button-text p-button-text bg-primary',
-    acceptClass: 'p-button-danger p-button-text bg-red-500 text-white',
-    acceptLabel: t('common.yes'),
-    rejectLabel: t('common.no'),
-    accept: () => {
-      useApi('DELETE', `country/${selectedId.value}`).then(() => {
-        refresh();
-        toast.add({ severity: 'info', summary: t('common.confirmed'), detail: t('common.doneDeleted'), life: 3000 });
-      })
-    },
+      message: t('common.deleteConfirm'),
+      header: t('common.delete'),
+      rejectClass: 'p-button-text p-button-text bg-primary',
+      acceptClass: 'p-button-danger p-button-text bg-red-500 text-white',
+      acceptLabel: t('common.yes'),
+      rejectLabel: t('common.no'),
+      accept: () => {
+        useApi('DELETE', `country/${selectedId.value}`).then(() => {
+          refresh();
+          toast.add({ severity: 'info', summary: t('common.confirmed'), detail: t('common.doneDeleted'), life: 3000 });
+        })
+      },
       reject: () => {
       
       }
@@ -83,21 +82,20 @@ const toggle = (event, id) => {
     menu.value.toggle(event);
     selectedId.value = id
 };
-
-const onRowClick = (event) => {
-  // console.log('onRowClick', event.data);
-  router.push({path :`/persons/show/${event.data.id}`})
+let visible = ref(false);
+const closeModal = () => {
+  visible.value = false
+  selectedId.value = null
 }
 
 let products = [
   {
     id: 1000,
-    name: 'Bamboo Watch',
-    initials: 'BW',
-    city: 'India',
-    street: 'New York',
     idType: 'passport',
-    email: 'y7GpC@example.com',
+    name: 'Bamboo Watch',
+    code: 'BW',
+    country: 'India',
+    initials: 'BW',
     date: '2019-01-01',
     nationality: 'India',
     flag: 'india.png',
@@ -106,12 +104,11 @@ let products = [
   },
   {
     id: 1001,
-    name: 'Black Watch',
-    initials: 'BW',
-    city: 'India',
-    street: 'New York',
     idType: 'passport',
-    email: 'y7GpC@example.com',
+    name: 'Black Watch',
+    code: 'BW',
+    country: 'India',
+    initials: 'BW',
     date: '2019-01-01',
     nationality: 'India',
     flag: 'india.png',
@@ -119,12 +116,11 @@ let products = [
   },
   {
     id: 1002,
-    name: 'Blue Band',
-    initials: 'BB',
-    city: 'India',
-    street: 'New York',
     idType: 'passport',
-    email: 'y7GpC@example.com',
+    name: 'Blue Band',
+    code: 'BW',
+    country: 'India',
+    initials: 'BB',
     date: '2019-01-01',
     nationality: 'India',
     flag: 'india.png',

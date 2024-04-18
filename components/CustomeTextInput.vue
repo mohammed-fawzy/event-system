@@ -25,7 +25,7 @@
 </script>
 
 <template>
-  <label for="person_Sn" class="text-xl font-medium text-label mb-4">{{ label }}</label>
+  <label :for="name" class="text-xl font-medium text-label mb-4">{{ label }}</label>
   <Field as="InputText" :modelValue="modelValue" @update:modelValue="updateValue" 
     :name="name" 
     :placeholder="$t('common.enterForm', {name: label})" 

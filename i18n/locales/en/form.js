@@ -24,6 +24,7 @@ export default {
   uploadPhoto: "Upload Photo",
   uploadCv: "Upload CV",
   dragdrop: "Drag And Drop Or Browse",
+  name: "Name",
 
 
 }

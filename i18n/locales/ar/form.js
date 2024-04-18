@@ -24,5 +24,6 @@ export default {
   uploadPhoto: "رفع الصورة",
   uploadCv: "رفع السيرة الذاتية",
   dragdrop: "Drag And Drop Or Browse",
+  name: "الأسم",
 
 }

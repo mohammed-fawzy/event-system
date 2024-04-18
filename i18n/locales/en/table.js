@@ -4,4 +4,6 @@ export default {
   city: "City",
   idType: "ID Type",
   streetAddress: "Street Address",
+  interest: "Interest",
+  personInterest: "Person Interest"
 }

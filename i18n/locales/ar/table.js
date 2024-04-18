@@ -3,5 +3,8 @@ export default {
   country: "دولة",
   city: "مدينة",
   idType: "نوع التسلسل",
-  streetAddress: "عنوان الشارع"
+  streetAddress: "عنوان الشارع",
+  interest: "مهارة",
+  personInterest: "Person Interest"
+
 }

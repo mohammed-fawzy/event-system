@@ -1,6 +1,7 @@
 export default {
   addNew: 'إضافة جديد',
   id: 'الرقم',
+  idType: 'نوع التسلسل',
   name: 'الاسم',
   code: 'الكود',
   country: 'الدولة',

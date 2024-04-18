@@ -1,6 +1,7 @@
 export default {
   addNew: "Add New",
   id: 'ID',
+  idType: 'ID Type',
   name: 'Name',
   code: 'Code',
   country: 'Country',

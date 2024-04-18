@@ -2,6 +2,8 @@ export default {
   "country": "Country",
   "citys": "City's",
   "persons": "Persons",
+  "interest": "Interest",
+  "personInterest": "Person Interest",
   "allActivity": "All Activity",
   "eventType": "Event Type",
   "accompEventType": "Accomp Event Type",
