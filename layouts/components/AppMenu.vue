@@ -2,7 +2,7 @@
 
 const { t } = useI18n();
 
-import AppMenuItem from '../components/AppMenuItem';
+import AppMenuItem from './AppMenuItem';
 
 const model = computed (() => {
     

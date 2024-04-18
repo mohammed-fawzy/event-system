@@ -3,10 +3,14 @@
     <div class="container m-auto grid grid-cols-4 md:grid-cols-4 lg:grid-cols-4 gap-8">
 
       <div class="flex flex-col"> 
+        <CustomeTextInput v-model="theData.person_Sn" name="person" :label="$t('form.person_Sn')" :errors="errors" :rules="'required|numeric'"/>
+      </div>
+
+      <!-- <div class="flex flex-col"> 
         <label for="person_Sn" class="text-xl font-medium text-label mb-4">{{  $t('form.person_Sn') }}</label>
         <Field as="InputText" v-model="theData.person_Sn" name="person_Sn" :placeholder="$t('common.enterForm', {name: $t('form.person_Sn')})" rules="required|numeric" :invalid="errors.person_Sn"/>
         <ErrorMessage name="person_Sn" class="text-red-500 mt-2"/>
-      </div>
+      </div> -->
       <div class="flex flex-col"> 
         <label for="firstname" class="text-xl font-medium text-label mb-4">{{ $t('form.firstname') }}</label>
         <Field as="InputText" v-model="theData.firstname" name="firstname" :placeholder="$t('common.enterForm', {name: $t('form.firstname')})" rules="required" :invalid="errors.firstname"/>

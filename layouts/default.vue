@@ -1,8 +1,8 @@
 <script setup>
 import { computed, watch, ref } from 'vue';
-import AppTopbar from '../components/AppTopbar.vue';
+import AppTopbar from './components/AppTopbar';
 // import AppFooter from './AppFooter.vue';
-import AppSidebar from '@/components/AppSidebar.vue';
+import AppSidebar from './components/AppSidebar';
 // import AppConfig from './AppConfig.vue';
 import { useLayout } from '@/layouts/composables/layout';
 
