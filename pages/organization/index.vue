@@ -3,22 +3,24 @@
   <div class="">
     <div class="flex justify-between items-center mb-10">
       <p class="font-medium text-blue10 text-xl capitalize">{{ $t(`sideMenu.${routerName}`)}}</p>
-      <Button :label="$t('common.addNew')" icon="pi pi-plus" class="bg-primary text-base h-42" @click="visible = true"/>
+      <Button :label="$t('common.addNew')" icon="pi pi-plus" class="bg-primary text-base h-42" @click="$router.push('/organization/form')"/>
     </div>
       <DataTable :value="products" paginator :rows="5">
           <Column field="id" :header="$t('common.id')"></Column>
-          <Column field="name" :header="$t('common.name')"></Column>
-          <Column field="initials" :header="$t('table.initials')"></Column>
-          <Column field="flag" :header="$t('common.flag')">
+          <Column field="activityName" :header="$t('table.activityName')">
             <template #body="slotProps">
-              <img src="https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png" class="block" alt="Image" width="24" />
+              <div class="flex items-center">
+                <img src="https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png" class="rounded-full block mr-4" alt="Image" width="40" />
+                {{ slotProps.data.activityName }}
+              </div>
             </template>
           </Column>
+          <Column field="email" :header="$t('common.email')"></Column>
+          <Column field="phone" :header="$t('common.phone')"></Column>
+          <Column field="description" :header="$t('common.description')"></Column>
           <Column field="date" :header="$t('common.date')"></Column>
-          <Column field="nationality" :header="$t('common.nationality')"></Column>
           <Column field="actions" :header="$t('common.action')">
             <template #body="slotProps">
-              <!-- <button class="p-link layout-menu-button layout-topbar-button" @click="console.log(slotProps.data.id)"> mm </button> -->
               <div class="flex justify-center">
                   <Button type="button" text class=" text-blue3" icon="pi pi-ellipsis-h" @click="toggle($event, slotProps.data.id)" aria-haspopup="true" aria-controls="overlay_menu" />
                   <Menu ref="menu" :model="editDeleteMenu" class="bg-white" id="overlay_menu" :popup="true" pt=""/>
@@ -27,15 +29,13 @@
           </Column>
       </DataTable>
   </div>
-  <Form :visible="visible" @close-modal="closeModal" :id="selectedId" @submit="refresh"/>
   <ConfirmDialog></ConfirmDialog>
 </template>
 
 <script setup>
-import Form from './form.vue'
 const { t } = useI18n();
 
-const { data, refresh } = useApi('/api/products');
+// const { data, refresh } = useApi('/api/products');
 
 const confirm = useConfirm();
 const toast = useToast();
@@ -52,7 +52,7 @@ const editDeleteMenu = computed(() => [
     label: t('common.edit'),
     icon: 'pi pi-pencil',
     command: () => {
-      visible.value = true
+      $router.push(`/organization/form/${selectedId.value}`)
     }
   },
   {
@@ -88,16 +88,18 @@ const toggle = (event, id) => {
     menu.value.toggle(event);
     selectedId.value = id
 };
-let visible = ref(false);
-const closeModal = () => {
-  visible.value = false
-  selectedId.value = null
-}
 
 let products = [
   {
     id: 1000,
-    name: 'Bamboo Watch',
+    activityName: 'Bamboo Watch',
+    email: 'y7z9V@example.com',
+    phone: '1234567890',
+    abbreviationLetter: 'BW',
+    legal: 'Legal',
+    description: 'the Description',
+    code: 'BW',
+    country: 'India',
     initials: 'BW',
     date: '2019-01-01',
     nationality: 'India',
@@ -107,7 +109,14 @@ let products = [
   },
   {
     id: 1001,
-    name: 'Black Watch',
+    activityName: 'Black Watch',
+    email: 'y7z9V@example.com',
+    phone: '1234567890',
+    abbreviationLetter: 'BW',
+    legal: 'Legal',
+    description: 'the description',
+    code: 'BW',
+    country: 'India',
     initials: 'BW',
     date: '2019-01-01',
     nationality: 'India',
@@ -116,7 +125,14 @@ let products = [
   },
   {
     id: 1002,
-    name: 'Blue Band',
+    activityName: 'Blue Band',
+    email: 'y7z9V@example.com',
+    phone: '1234567890',
+    abbreviationLetter: 'BB',
+    legal: 'Legal',
+    description: 'the description',
+    code: 'BW',
+    country: 'India',
     initials: 'BB',
     date: '2019-01-01',
     nationality: 'India',

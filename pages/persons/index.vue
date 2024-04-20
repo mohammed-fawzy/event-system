@@ -7,7 +7,14 @@
     </div>
       <DataTable :value="products" paginator :rows="5" @row-click="onRowClick">
           <Column field="id" :header="$t('common.id')"></Column>
-          <Column field="name" :header="$t('common.name')"></Column>
+          <Column field="name" :header="$t('common.name')">
+            <template #body="slotProps">
+              <div class="flex items-center">
+                <img src="https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png" class="rounded-full block mr-4" alt="Image" width="32" />
+                {{ slotProps.data.name }}
+              </div>
+            </template>
+          </Column>
           <Column field="nationality" :header="$t('common.nationality')"></Column>
           <Column field="idType" :header="$t('table.idType')"></Column>
           <Column field="city" :header="$t('table.city')"></Column>

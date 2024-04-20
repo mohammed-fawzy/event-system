@@ -7,18 +7,18 @@
     </div>
       <DataTable :value="products" paginator :rows="5">
           <Column field="id" :header="$t('common.id')"></Column>
-          <Column field="name" :header="$t('common.name')"></Column>
-          <Column field="initials" :header="$t('table.initials')"></Column>
-          <Column field="flag" :header="$t('common.flag')">
+          <Column field="activityName" :header="$t('table.activityName')">
             <template #body="slotProps">
-              <img src="https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png" class="block" alt="Image" width="24" />
+              <div class="flex items-center">
+                <img src="https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png" class="rounded-full block mr-4" alt="Image" width="40" />
+                {{ slotProps.data.activityName }}
+              </div>
             </template>
           </Column>
+          <Column field="description" :header="$t('common.description')"></Column>
           <Column field="date" :header="$t('common.date')"></Column>
-          <Column field="nationality" :header="$t('common.nationality')"></Column>
           <Column field="actions" :header="$t('common.action')">
             <template #body="slotProps">
-              <!-- <button class="p-link layout-menu-button layout-topbar-button" @click="console.log(slotProps.data.id)"> mm </button> -->
               <div class="flex justify-center">
                   <Button type="button" text class=" text-blue3" icon="pi pi-ellipsis-h" @click="toggle($event, slotProps.data.id)" aria-haspopup="true" aria-controls="overlay_menu" />
                   <Menu ref="menu" :model="editDeleteMenu" class="bg-white" id="overlay_menu" :popup="true" pt=""/>
@@ -97,7 +97,12 @@ const closeModal = () => {
 let products = [
   {
     id: 1000,
-    name: 'Bamboo Watch',
+    activityName: 'Bamboo Watch',
+    abbreviationLetter: 'BW',
+    legal: 'Legal',
+    description: 'the Description',
+    code: 'BW',
+    country: 'India',
     initials: 'BW',
     date: '2019-01-01',
     nationality: 'India',
@@ -107,7 +112,12 @@ let products = [
   },
   {
     id: 1001,
-    name: 'Black Watch',
+    activityName: 'Black Watch',
+    abbreviationLetter: 'BW',
+    legal: 'Legal',
+    description: 'the description',
+    code: 'BW',
+    country: 'India',
     initials: 'BW',
     date: '2019-01-01',
     nationality: 'India',
@@ -116,7 +126,12 @@ let products = [
   },
   {
     id: 1002,
-    name: 'Blue Band',
+    activityName: 'Blue Band',
+    abbreviationLetter: 'BB',
+    legal: 'Legal',
+    description: 'the description',
+    code: 'BW',
+    country: 'India',
     initials: 'BB',
     date: '2019-01-01',
     nationality: 'India',

@@ -32,6 +32,9 @@ export default {
   CreatedSuccessfully: 'Created successfully',
   UpdatedSuccessfully: 'Updated successfully',
   save: 'Save',
+  next: 'Next',
   cancel: 'Cancel',
   email: "Email",
+  description: "Description",
+  phone: "Phone",
 }

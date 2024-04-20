@@ -32,7 +32,9 @@ export default {
   CreatedSuccessfully: 'تم الانشاء بنجاح',
   UpdatedSuccessfully: 'تم التحديث بنجاح',
   save: 'حفظ',
+  next: 'التالي',
   cancel: 'الغاء',
   email: "البريد الإلكتروني",
-
+  description: "الوصف",
+  phone: "الهاتف",
 }

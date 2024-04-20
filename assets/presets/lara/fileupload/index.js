@@ -82,9 +82,9 @@ export default {
             'relative',
 
             // Colors
-            'bg-surface-0',
+            'bg-labelBG',
             'dark:bg-surface-900',
-            'text-surface-700',
+            'text-blue3',
             'dark:text-white/80',
 
             // Spacing

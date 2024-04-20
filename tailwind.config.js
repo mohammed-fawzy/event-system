@@ -58,7 +58,9 @@ module.exports = {
         "table-border": "#fdfdfd",
         "lable": "#606370",
         "labelBG": "#ECECEE",
-        "bgcancel": "rgba(4, 60, 80, 0.12)"
+        "bgcancel": "rgba(4, 60, 80, 0.12)",
+        "grey3": "#949496",
+        "activeborder": "rgba(21, 109, 137, 1)"
       },
       height: {
         '42': '2.625rem',
