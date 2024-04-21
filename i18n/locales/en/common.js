@@ -37,4 +37,6 @@ export default {
   email: "Email",
   description: "Description",
   phone: "Phone",
+  address: "Address",
+  subscription: "Subscription",
 }

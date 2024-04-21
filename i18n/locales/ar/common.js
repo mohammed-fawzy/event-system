@@ -37,4 +37,6 @@ export default {
   email: "البريد الإلكتروني",
   description: "الوصف",
   phone: "الهاتف",
+  address: "العنوان",
+  subscription: "الاشتراك",
 }

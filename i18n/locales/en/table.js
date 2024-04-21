@@ -12,4 +12,10 @@ export default {
   "abbreviationLetter": "Abbreviation letter",
   "organizationClassification": "Organization Classification",
   Legal: "Legal",
+  eventType: "Event Type",
+  eventSpecialty: "Event Specialty",
+  eventSeries: "Event Series",
+  listedType: "Listed Type",
+  eventDetails: "Event Details",
+  personDetails: "Person Details",
 }

@@ -55,7 +55,16 @@ export default {
   commercialFile: "Commercial File",
   publishingFile: "ملف النشر",
   selectActivity: "Select Activity",
-  "organizationProfile": "Organization Profile",
-
+  organizationProfile: "Organization Profile",
+  eventType: "نوع الحدث",
+  president: "الرئيس",
+  startingDate: "تاريخ البدء",
+  registrationStartDate: "تاريخ بدء التسجيل",
+  registrationEndDate:"تاريخ نهاية التسجيل",
+  eventEndDate:"تاريخ نهاية الحدث",
+  publicStartDate: "Public start date",
+  location:"Location",
+  eventSpecialtySn: "Event specialty sn",
+  eventSeries: "Event series",
 
 }

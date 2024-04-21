@@ -2,7 +2,7 @@ import { Title } from '../../../.nuxt/components';
 <template>
   <div class="flex justify-start items-center mb-9 mt-1">
     <i class="pi pi-arrow-left mr-2" @click="$router.go(-1)"></i>
-    <div class="text-xl font-medium"> Person Details </div>
+    <div class="text-xl font-medium"> {{ $t('table.personDetails') }} </div>
   </div>
   <div class="container m-auto grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-16">
 

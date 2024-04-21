@@ -45,7 +45,7 @@ watch(
 );
 
 const checkActiveRoute = (item) => {
-    return route.path === item.to;
+    return route.path === item.to || route.path.startsWith(item.to);
 };
 
 </script>

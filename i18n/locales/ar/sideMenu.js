@@ -23,4 +23,6 @@ export default {
   "eventSpace": "Event Space",
   "storage": "التخزين",
   "requests": "الطلبات",
+  "eventType": `نوع الحدث`,
+  "eventSpecialty": `تخصص الحدث`,
 }

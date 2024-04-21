@@ -12,4 +12,10 @@ export default {
   "abbreviationLetter": "Abbreviation letter",
   "organizationClassification": "Organization Classification",
   Legal: "Legal",
+  eventType: "نوع الحدث",
+  eventSpecialty: "Event Specialty",
+  eventSeries: "Event Series",
+  listedType: "Listed Type",
+  "eventDetails": "تفاصيل الحدث",
+  personDetails: "تفاصيل الشخص",
 }

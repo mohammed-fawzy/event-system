@@ -22,4 +22,6 @@ export default {
   "eventSpace": "Event Space",
   "storage": "Storage",
   "requests": "Requests",
+  "eventType": "Event Type",
+  "eventSpecialty": "Event Specialty",
 }
