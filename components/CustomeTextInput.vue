@@ -1,9 +1,7 @@
 <script setup>
-  const emit = defineEmits(['update:modelValue'])
+  const model = defineModel()
+
   defineProps({
-    modelValue: {
-      
-    },
     name: {
       
     },
@@ -19,14 +17,11 @@
     
 })
 
-  function updateValue(value) {
-    emit('update:modelValue', value);
-  }
 </script>
 
 <template>
   <label :for="name" class="text-xl font-medium text-label mb-4">{{ label }}</label>
-  <Field as="InputText" :modelValue="modelValue" @update:modelValue="updateValue" 
+  <Field as="InputText" v-model="model" 
     :name="name" 
     :placeholder="$t('common.enterForm', {name: label})" 
     :rules="rules" 
