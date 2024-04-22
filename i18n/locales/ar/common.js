@@ -18,7 +18,7 @@ export default {
   },
   editForm: 'تعديل {name}',
   enterForm: 'ادخال {name}',
-  select: 'اختر',
+  select: 'اختر', 
   search: 'بحث',
   edit: 'تعديل',
   delete: 'حذف',
