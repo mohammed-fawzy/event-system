@@ -10,7 +10,7 @@ export default {
             // Flexbox and Position
             'relative',
             'flex',
-            'justify-center',
+            'justify-start',
             'flex-1',
             'overflow-hidden',
 
@@ -69,12 +69,12 @@ export default {
 
             // Colors
             {
-                'text-surface-400 dark:text-white/60': !context.active,
+                'text-surface-400 text-white': !context.active,
                 'border-surface-100 dark:border-surface-700': !context.active,
-                'bg-surface-0 dark:bg-surface-800': !context.active,
-                'bg-primary-500 dark:bg-primary-400': context.active,
+                'bg-grey15 dark:bg-surface-800': !context.active,
+                'bg-primary dark:bg-primary-400': context.active,
                 'border-primary-500 dark:border-primary-400': context.active,
-                'text-surface-0 dark:text-surface-900': context.active
+                'text-white dark:text-surface-900': context.active
             },
 
             // States
@@ -90,7 +90,9 @@ export default {
         class: [
             // Font
             'leading-5',
-            { 'font-bold': context.active },
+            'font-semibold',
+            'text-xl',
+            { '': context.active },
 
             // Display
             'block',
@@ -99,7 +101,7 @@ export default {
             'mt-2',
 
             // Colors
-            { 'text-surface-400 dark:text-white/60': !context.active, 'text-surface-800 dark:text-white/80': context.active },
+            { 'text-grey15': !context.active, 'text-primary': context.active },
 
             // Text and Overflow
             'whitespace-nowrap',

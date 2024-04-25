@@ -66,5 +66,10 @@ export default {
   location:"Location",
   eventSpecialtySn: "Event specialty sn",
   eventSeries: "Event series",
+  events: "الأحداث",
+  eventForm: "Event Form",
+  bookAseat:"حجز مقعد",
+  products: "المنتجات",
+  quantity: "الكمية"
 
 }

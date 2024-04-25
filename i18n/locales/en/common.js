@@ -39,4 +39,5 @@ export default {
   phone: "Phone",
   address: "Address",
   subscription: "Subscription",
+  register: "Register",
 }

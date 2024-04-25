@@ -39,4 +39,5 @@ export default {
   phone: "الهاتف",
   address: "العنوان",
   subscription: "الاشتراك",
+  register: "تسجيل",
 }

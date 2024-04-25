@@ -66,4 +66,9 @@ export default {
   location: "Location",
   eventSpecialtySn: "Event specialty sn",
   eventSeries: "Event Series",
+  events: "Events",
+  eventForm: "Event Form",
+  bookAseat: "Book a seat",
+  products: "Products",
+  quantity: "Quantity"
 }

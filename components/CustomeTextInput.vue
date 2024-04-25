@@ -25,6 +25,6 @@
     :name="name" 
     :placeholder="$t('common.enterForm', {name: label})" 
     :rules="rules" 
-    :invalid="errors[name]"/>  
+    :invalid="errors?.[name]"/>  
   <ErrorMessage :name="name" class="text-red-500 mt-2"/>
 </template>

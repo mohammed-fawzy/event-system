@@ -41,7 +41,7 @@ const router = useRouter();
 const confirm = useConfirm();
 const toast = useToast();
 
-let routerName = computed(() => {
+const routerName = computed(() => {
   return useRouter().currentRoute.value.name 
 })
 
@@ -86,8 +86,8 @@ const editDeleteMenu = computed(() => [
 };
 const selectedId = ref();
 const toggle = (event, id) => {
-    menu.value.toggle(event);
-    selectedId.value = id
+  menu.value.toggle(event);
+  selectedId.value = id
 };
 
 let products = [

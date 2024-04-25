@@ -60,12 +60,14 @@ module.exports = {
         "labelBG": "#ECECEE",
         "bgcancel": "rgba(4, 60, 80, 0.12)",
         "grey3": "#949496",
-        "activeborder": "rgba(21, 109, 137, 1)"
+        "activeborder": "rgba(21, 109, 137, 1)",
+        "grey15": "#BBBFCD"
       },
       height: {
         '42': '2.625rem',
         '54': '3.375rem',
         '48': '3rem',
+        '120': '7.5rem'
       },
       borderRadius: {
         'none': '0',
