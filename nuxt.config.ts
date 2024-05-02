@@ -2,6 +2,12 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxtjs/tailwindcss', 'nuxt-primevue', '@nuxtjs/i18n', '@vee-validate/nuxt'],
+  runtimeConfig : {
+    public: {
+      apiBaseUrl: process.env.API_BASE_URL
+    }
+  },
+  ssr: false,
   i18n: {
     defaultLocale: 'en',
     // locales: ['en', 'ar'],

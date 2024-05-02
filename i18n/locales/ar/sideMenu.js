@@ -25,4 +25,5 @@ export default {
   "requests": "الطلبات",
   "eventType": `نوع الحدث`,
   "eventSpecialty": `تخصص الحدث`,
+  "itemInEvents": "Item In Events",
 }

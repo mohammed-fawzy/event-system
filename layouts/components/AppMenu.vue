@@ -21,6 +21,9 @@ const model = computed (() => {
             { label: t('sideMenu.eventSeries'), icon: 'pi pi-fw pi-list', to: '/eventSeries' },
             { label: t('sideMenu.listedType'), icon: 'pi pi-fw pi-share-alt', to: '/listedType' },
             { label: t('sideMenu.events'), icon: 'pi pi-fw pi-tablet', to: '/events' },
+            { label: t('sideMenu.itemInEvents'), icon: 'pi pi-fw pi-tablet', to: '/itemInEvents' },
+
+            
             { label: t('sideMenu.accompEventType'), icon: 'pi pi-fw pi-exclamation-circle', to: '/accompEventType' },
             { label: t('sideMenu.organizationLegal'), icon: 'pi pi-fw pi-table', to: '/organizationLegal' },
             { label: t('sideMenu.accomopEvent'), icon: 'pi pi-fw pi-clone', to: '' },

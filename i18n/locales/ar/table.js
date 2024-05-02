@@ -18,4 +18,14 @@ export default {
   listedType: "Listed Type",
   "eventDetails": "تفاصيل الحدث",
   personDetails: "تفاصيل الشخص",
+  eventItem: "Event Item",
+  autherName: "اسم المؤلف",
+  contentSummary: "ملخص المحتوى",
+  price: "السعر",
+  numberOfCopies: "عدد النسخ",
+  review: "Review",
+  acceptability: "Acceptability",
+  itemInEventDetails: "Item in Event details",
+  title:"العنوان"
+
 }

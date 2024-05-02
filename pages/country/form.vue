@@ -62,7 +62,7 @@ let theData = ref({
 })
 
 if (props.id) { // edit
-  const { data } = useApi(`/api/products/${props.id}`);
+  const { data } = useApi(`/api/countries/${props.id}`);
 }
 
 
@@ -77,9 +77,11 @@ const cities = ref([
 const toast = useToast();
 
 const onSubmit = ( value ) => {
+  console.log('value', value);
+  console.log('theData', theData.value);
   if (props.id) { // edit
     theData.value.id = props.id
-    useApi(`/api/products/${props.id}`, 'PUT', theData.value).then((res) => {
+    useApi(`countries/${props.id}`, 'PUT', theData.value).then((res) => {
       console.log('res', res);
       toast.add({ severity: 'success', summary: t('common.Successful'), detail: t('common.UpdatedSuccessfully'), life: 3000 });
       closeModal();
@@ -87,7 +89,7 @@ const onSubmit = ( value ) => {
     })
   }
 
-  useApi('/api/products', 'POST', theData.value).then((res) => {
+  useApi('countries', 'POST', value).then((res) => {
     console.log('res', res);
     toast.add({ severity: 'success', summary: t('common.Successful'), detail: t('common.CreatedSuccessfully'), life: 3000 });
     closeModal();

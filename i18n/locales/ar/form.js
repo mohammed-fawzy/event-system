@@ -70,6 +70,16 @@ export default {
   eventForm: "Event Form",
   bookAseat:"حجز مقعد",
   products: "المنتجات",
-  quantity: "الكمية"
+  quantity: "الكمية",
+  eventItem: "Event Item",
+  itemTitle: "Item title",
+  auther: "المؤلف",
+  contentSummary: "ملخص المحتوى",
+  numberOfCopies: "عدد النسخ",
+  price: "السعر",
+  iSBNNumber: "ISBN number",
+  organizationDiscount: "Organization Discount",
+  uploadFile: "رفع الملف",
+  
 
 }

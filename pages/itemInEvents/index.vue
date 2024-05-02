@@ -1,23 +1,34 @@
 
 <template>
   <div class="">
-  
     <div class="flex justify-between items-center mb-10">
       <p class="font-medium text-blue10 text-xl capitalize">{{ $t(`sideMenu.${routerName}`)}}</p>
       <Button :label="$t('common.addNew')" icon="pi pi-plus" class="bg-primary text-base h-42" @click="visible = true"/>
     </div>
-
-      <DataTable :value="data?.data" paginator :rows="5">
+      <DataTable :value="products" paginator :rows="5" @row-click="onRowClick">
           <Column field="id" :header="$t('common.id')"></Column>
-          <Column field="name" :header="$t('common.name')"></Column>
-          <Column field="initials" :header="$t('table.initials')"></Column>
-          <Column field="flag" :header="$t('common.flag')">
+          <Column field="autherName" :header="$t('table.autherName')">
             <template #body="slotProps">
-              <img :src="slotProps.data.flag || 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'" class="block" alt="Image" width="24" />
+              <div class="flex items-center">
+                <img src="https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png" class="rounded-full block mr-4" alt="Image" width="40" />
+                {{ slotProps.data.autherName }}
+              </div>
             </template>
           </Column>
+          <Column field="price" :header="$t('table.contentSummary')"></Column>
+          <Column field="price" :header="$t('table.price')"></Column>
+          <Column field="numberOfCopies" :header="$t('table.numberOfCopies')"></Column>
           <Column field="date" :header="$t('common.date')"></Column>
-          <Column field="nationality" :header="$t('common.nationality')"></Column>
+          <Column field="review" :header="$t('table.review')">
+            <template #body="slotProps"> 
+              <Chip :label="slotProps.data.review" class="bg-red10 text-red1" />
+            </template>
+          </Column>
+          <Column field="acceptability" :header="$t('table.acceptability')">
+            <template #body="slotProps"> 
+              <Chip :label="slotProps.data.review" class="bg-green10 text-green1" />
+            </template>
+          </Column>
           <Column field="actions" :header="$t('common.action')">
             <template #body="slotProps">
               <!-- <button class="p-link layout-menu-button layout-topbar-button" @click="console.log(slotProps.data.id)"> mm </button> -->
@@ -35,9 +46,10 @@
 
 <script setup>
 import Form from './form.vue'
-const { t } = useI18n();
 
-const { data, refresh } = useApi('countries');
+const { t } = useI18n();
+const router = useRouter();
+const { data, refresh } = useApi('/api/products');
 
 const confirm = useConfirm();
 const toast = useToast();
@@ -75,9 +87,7 @@ const editDeleteMenu = computed(() => [
       acceptLabel: t('common.yes'),
       rejectLabel: t('common.no'),
       accept: () => {
-        const { data, status } = useApi(`countries/${selectedId.value}`, 'DELETE').then(() => {
-          console.log('data', data);
-          console.log('status', status);
+        useApi('DELETE', `country/${selectedId.value}`).then(() => {
           refresh();
           toast.add({ severity: 'info', summary: t('common.confirmed'), detail: t('common.doneDeleted'), life: 3000 });
         })
@@ -101,9 +111,16 @@ const closeModal = () => {
 let products = [
   {
     id: 1000,
-    name: 'Bamboo Watch',
+    autherName: 'Bamboo Watch',
+    description: 'the Description',
+    code: 'BW',
+    country: 'India',
     initials: 'BW',
     date: '2019-01-01',
+    price: 10,
+    numberOfCopies: 10,
+    review: 'Good',
+    acceptability: 'Acceptable',
     nationality: 'India',
     flag: 'india.png',
     rating: 5,
@@ -111,23 +128,41 @@ let products = [
   },
   {
     id: 1001,
-    name: 'Black Watch',
+    autherName: 'Black Watch',
+    description: 'the description',
+    code: 'BW',
+    country: 'India',
     initials: 'BW',
     date: '2019-01-01',
+    price: 10,
+    numberOfCopies: 10,
+    review: 'Good',
+    acceptability: 'Acceptable',
     nationality: 'India',
     flag: 'india.png',
     actions: 'edit, delete'
   },
   {
     id: 1002,
-    name: 'Blue Band',
+    autherName: 'Blue Band',
+    description: 'the description',
+    code: 'BW',
+    country: 'India',
     initials: 'BB',
     date: '2019-01-01',
+    price: 10,
+    numberOfCopies: 10,
+    review: 'Good',
+    acceptability: 'Acceptable',
     nationality: 'India',
     flag: 'india.png',
     actions: 'edit, delete'
   }
 
 ]
+
+function onRowClick(event) {
+  router.push({path :`/itemInEvents/show/${event.data.id}`})
+}
 
 </script>

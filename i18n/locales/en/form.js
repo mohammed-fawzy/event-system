@@ -70,5 +70,14 @@ export default {
   eventForm: "Event Form",
   bookAseat: "Book a seat",
   products: "Products",
-  quantity: "Quantity"
+  quantity: "Quantity",
+  eventItem: "Event Item",
+  itemTitle: "Item title",
+  auther: "Auther",
+  contentSummary: "Content summary",
+  numberOfCopies: "Number of copies",
+  price: "Price",
+  iSBNNumber: "ISBN number",
+  organizationDiscount: "Organization Discount",
+  uploadFile: "Upload File",
 }

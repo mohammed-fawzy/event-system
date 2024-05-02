@@ -149,7 +149,7 @@ export default {
                 { 'sticky box-border border-b': props.frozen || props.frozen === '' },
 
                 // Alignment
-                'text-left',
+                'text-left rtl:text-right',
 
                 // Shape
                 'border-0 border-b-8 border-solid border-table-border',
@@ -172,7 +172,7 @@ export default {
                 'font-bold',
 
                 // Alignment
-                'text-left',
+                'text-left rtl:text-right',
 
                 // Shape
                 'border-0 border-b border-solid',

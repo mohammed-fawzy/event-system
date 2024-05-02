@@ -53,7 +53,16 @@
             display: none;
         }
     }
+
+    html[dir="rtl"] {
+        .layout-wrapper.layout-static.layout-static-inactive {
+                .layout-sidebar {
+                    transform: translateX(100%);
+                }
+            }
+    }
 }
+
 
 @media (max-width: 991px) {
     .blocked-scroll {
@@ -95,6 +104,12 @@
                 display: block;
                 animation: fadein $transitionDuration;
             }
+        }
+    }
+
+    html[dir="rtl"] {
+        .layout-sidebar {
+            transform: translateX(100%);
         }
     }
 }

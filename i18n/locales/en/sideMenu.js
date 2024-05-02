@@ -24,4 +24,5 @@ export default {
   "requests": "Requests",
   "eventType": "Event Type",
   "eventSpecialty": "Event Specialty",
+  "itemInEvents": "Item In Events",
 }

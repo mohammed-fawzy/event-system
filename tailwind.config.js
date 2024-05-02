@@ -61,7 +61,11 @@ module.exports = {
         "bgcancel": "rgba(4, 60, 80, 0.12)",
         "grey3": "#949496",
         "activeborder": "rgba(21, 109, 137, 1)",
-        "grey15": "#BBBFCD"
+        "grey15": "#BBBFCD",
+        "red1": "#FF4B55",
+        "red10": "rgba(255, 75, 85, 0.08)",
+        "green1": "#18A066",
+        "green10": "rgba(24, 146, 102, 0.08)"
       },
       height: {
         '42': '2.625rem',
@@ -85,5 +89,5 @@ module.exports = {
 
     },
   },
-  plugins: [],
+  plugins: [ require('tailwindcss-rtl') ],
 }

@@ -91,9 +91,8 @@ function onChangeLanguage () {
     if (storedLang.value !== selectedCountry.value.lang) {
         storedLang.value = selectedCountry.value.lang;
     }
-    
-
 }
+onChangeLanguage()
 </script>
 
 <template>
@@ -135,7 +134,7 @@ function onChangeLanguage () {
              <Dropdown v-model="selectedCountry" @change="onChangeLanguage" :options="countries" optionLabel="name" class=" ml-3 change-lanuage w-full md:w-[7rem] border-0 p-0 items-center ring-offset-0">
             <template #value="slotProps">
                 <div v-if="slotProps.value" class="flex items-center">
-                    <img :alt="slotProps.value.label" :src="slotProps.value.img" :class="`mr-2 flag flag-${slotProps.value.code.toLowerCase()}`" style="width: 20px; height: 13.4px" />
+                    <img :alt="slotProps.value.label" :src="slotProps.value.img" :class="`rtl:mr-0 mr-2 flag flag-${slotProps.value.code.toLowerCase()}`" style="width: 20px; height: 13.4px" />
                     <!-- <div>{{ slotProps.value.name }}</div> -->
                 </div>
                 <span v-else>
@@ -144,7 +143,7 @@ function onChangeLanguage () {
             </template>
             <template #option="slotProps">
                 <div class="flex items-center">
-                    <img :alt="slotProps.option.label" :src="slotProps.option.img" :class="`mr-2 flag flag-${slotProps.option.code.toLowerCase()}`" style="width: 20px; height: 13.4px" />
+                    <img :alt="slotProps.option.label" :src="slotProps.option.img" :class="`rtl:mr-0 mr-2 flag flag-${slotProps.option.code.toLowerCase()}`" style="width: 20px; height: 13.4px" />
                     <!-- <div>{{ slotProps.option.name }}</div> -->
                 </div>
             </template>

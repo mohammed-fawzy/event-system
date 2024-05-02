@@ -18,4 +18,13 @@ export default {
   listedType: "Listed Type",
   eventDetails: "Event Details",
   personDetails: "Person Details",
+  eventItem: "Event Item",
+  autherName: "Auther name",
+  contentSummary: "Content Summary",
+  price: "Price",
+  numberOfCopies: "Number of copies",
+  review: "Review",
+  acceptability: "Acceptability",
+  itemInEventDetails: "Item in Event details",
+  title:"Title"
 }

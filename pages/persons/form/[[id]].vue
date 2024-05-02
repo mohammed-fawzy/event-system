@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-start items-center mb-9 mt-1">
-    <i class="pi pi-arrow-left mr-2" @click="$router.go(-1)"></i>
+    <i class="pi pi-arrow-left mr-2 rtl:ml-2" @click="$router.go(-1)"></i>
     <div class="text-xl font-medium"> Person Form </div>
   </div>
   <Form @submit="onSubmit" v-slot:default="{ errors }">
@@ -115,7 +115,7 @@
 
     </div> <!-- end form -->
       <div class="flex justify-end mb-10">
-        <Button class="bg-bgcancel text-primary h-48 font-normal text-2xl mt-4 mr-6">{{ $t('common.cancel') }}</Button>
+        <Button class="bg-bgcancel text-primary h-48 font-normal text-2xl mt-4 mr-6 rtl:ml-6">{{ $t('common.cancel') }}</Button>
         <Button type="submit" class="bg-primary h-48 font-normal text-2xl mt-4">{{ $t('common.save') }}</Button>
       </div>
   </Form>
