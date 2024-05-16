@@ -2,8 +2,8 @@
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
 import { useLayout } from '@/layouts/composables/layout';
 import { useRouter } from 'vue-router';
-import USA from '@/assets/images/flag/USA.png';
-import KSA from '@/assets/images/flag/ksa.png';
+import USA from '../../assets/images/flag/usa.png';
+import KSA from '../../assets/images/flag/ksa.png';
 
 const { locale, setLocale } = useI18n()
 
