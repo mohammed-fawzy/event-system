@@ -57,6 +57,7 @@ const isOutsideClicked = (event) => {
 </script>
 
 <template>
+    <NuxtLoadingIndicator />
     <div class="layout-wrapper" :class="containerClass">
         <app-topbar></app-topbar>
         <div class="layout-sidebar">
@@ -73,4 +74,8 @@ const isOutsideClicked = (event) => {
     <Toast />
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+    
+
+</style>

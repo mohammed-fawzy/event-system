@@ -7,7 +7,7 @@
       <Button :label="$t('common.addNew')" icon="pi pi-plus" class="bg-primary text-base h-42" @click="visible = true"/>
     </div>
 
-      <DataTable :value="data?.data" paginator :rows="5">
+      <DataTable :value="data?.data" :totalRecords="totalRecords" paginator :rows="perPage" @onPageChange="handlePageChange">
           <Column field="id" :header="$t('common.id')"></Column>
           <Column field="name" :header="$t('common.name')"></Column>
           <Column field="initials" :header="$t('table.initials')"></Column>
@@ -29,15 +29,31 @@
           </Column>
       </DataTable>
   </div>
-  <Form :visible="visible" @close-modal="closeModal" :id="selectedId" @submit="refresh"/>
+  <Form v-if="visible" @close-modal="closeModal" :id="selectedId" @submit="refresh"/>
   <ConfirmDialog></ConfirmDialog>
 </template>
 
 <script setup>
-import Form from './form.vue'
+const Form = defineAsyncComponent(() => import('./form.vue'))
+
+definePageMeta({
+  path: '/',
+});
+
 const { t } = useI18n();
 
-const { data, refresh } = useApi('countries');
+
+let perPage = ref(2);
+const { data , refresh } = useApi(`countries?limit=${perPage.value}`);
+let totalRecords = ref(data.length);
+
+
+// Event handler for page change
+const handlePageChange = (event) => {
+  const { data: data } = useApi(`countries?limit=${perPage.value}&${event.page + 1}`);
+};
+
+
 
 const confirm = useConfirm();
 const toast = useToast();
