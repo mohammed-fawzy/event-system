@@ -1,5 +1,4 @@
 <template>
-  <div class="card flex justify-center">
       <Dialog :visible="visible" modal :header="id ? $t('common.editForm', { name: $t('table.city')}) : $t('common.addNewForm.female', { name: $t('table.city') })"  @update:visible="closeModal" :style="{ width: '50rem' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
           <Form @submit="onSubmit" v-slot:default="{ errors }">
             <div class="flex flex-col mb-8">
@@ -26,7 +25,6 @@
             </div>
           </Form>
       </Dialog>
-  </div>
 </template>
 
 <script setup>

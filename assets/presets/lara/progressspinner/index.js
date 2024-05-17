@@ -6,7 +6,7 @@ export default {
             'mx-auto',
 
             // Sizing
-            'w-28',
+            'w-full',
             'h-28',
 
             // Flexbox
@@ -42,7 +42,7 @@ export default {
     circle: {
         class: [
             // Colors
-            'text-red-500',
+            'text-primary',
 
             // Misc
             'progress-spinner-circle'

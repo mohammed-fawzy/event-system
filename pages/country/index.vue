@@ -7,7 +7,7 @@
       <Button :label="$t('common.addNew')" icon="pi pi-plus" class="bg-primary text-base h-42" @click="visible = true"/>
     </div>
 
-      <DataTable :value="data?.data" :totalRecords="totalRecords" paginator :rows="perPage" @onPageChange="handlePageChange">
+      <DataTable :loading="pending" :value="data?.data" :totalRecords="totalRecords" paginator :rows="perPage" @onPageChange="handlePageChange">
           <Column field="id" :header="$t('common.id')"></Column>
           <Column field="name" :header="$t('common.name')"></Column>
           <Column field="initials" :header="$t('table.initials')"></Column>
@@ -38,13 +38,14 @@ const Form = defineAsyncComponent(() => import('./form.vue'))
 
 definePageMeta({
   path: '/',
+  alias: '/country',
 });
 
 const { t } = useI18n();
 
 
-let perPage = ref(2);
-const { data , refresh } = useApi(`countries?limit=${perPage.value}`);
+let perPage = ref(10);
+const { pending, data, refresh } = useApi(`countries?limit=${perPage.value}`);
 let totalRecords = ref(data.length);
 
 
@@ -91,15 +92,14 @@ const editDeleteMenu = computed(() => [
       acceptLabel: t('common.yes'),
       rejectLabel: t('common.no'),
       accept: () => {
-        const { data, status } = useApi(`countries/${selectedId.value}`, 'DELETE').then(() => {
-          console.log('data', data);
-          console.log('status', status);
+
+        use$Fetch(`countries/${selectedId.value}`, { method: 'DELETE'}).then(() => {
           refresh();
           toast.add({ severity: 'info', summary: t('common.confirmed'), detail: t('common.doneDeleted'), life: 3000 });
         })
       },
       reject: () => {
-      
+        
       }
   });
 };

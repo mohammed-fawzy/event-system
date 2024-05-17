@@ -26,6 +26,7 @@ export default {
   review: "Review",
   acceptability: "Acceptability",
   itemInEventDetails: "Item in Event details",
-  title:"العنوان"
+  title:"العنوان",
+  code:"الكود"
 
 }

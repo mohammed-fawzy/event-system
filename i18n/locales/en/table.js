@@ -26,5 +26,6 @@ export default {
   review: "Review",
   acceptability: "Acceptability",
   itemInEventDetails: "Item in Event details",
-  title:"Title"
+  title:"Title",
+  code:"Code"
 }
