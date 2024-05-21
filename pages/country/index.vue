@@ -6,8 +6,7 @@
       <p class="font-medium text-blue10 text-xl capitalize">{{ $t(`sideMenu.${routerName}`)}}</p>
       <Button :label="$t('common.addNew')" icon="pi pi-plus" class="bg-primary text-base h-42" @click="visible = true"/>
     </div>
-
-      <DataTable :loading="pending" :value="data?.data" :totalRecords="totalRecords" paginator :rows="perPage" @onPageChange="handlePageChange">
+      <DataTable :loading="pending" lazy paginator :value="data?.data?.rows" :totalRecords="data?.data?.meta.total" :rows="perPage" @page="handlePageChange">
           <Column field="id" :header="$t('common.id')"></Column>
           <Column field="name" :header="$t('common.name')"></Column>
           <Column field="initials" :header="$t('table.initials')"></Column>
@@ -45,15 +44,18 @@ const { t } = useI18n();
 
 
 let perPage = ref(10);
-const { pending, data, refresh } = useApi(`countries?limit=${perPage.value}`);
-let totalRecords = ref(data.length);
-
+let currentPage = ref(1);
+const { pending, data, refresh } = useApi(`countries`, {
+  params: {
+    limit: perPage,
+    page: currentPage
+  },
+});
 
 // Event handler for page change
 const handlePageChange = (event) => {
-  const { data: data } = useApi(`countries?limit=${perPage.value}&${event.page + 1}`);
+  currentPage.value = event.page + 1;
 };
-
 
 
 const confirm = useConfirm();
@@ -92,7 +94,6 @@ const editDeleteMenu = computed(() => [
       acceptLabel: t('common.yes'),
       rejectLabel: t('common.no'),
       accept: () => {
-
         use$Fetch(`countries/${selectedId.value}`, { method: 'DELETE'}).then(() => {
           refresh();
           toast.add({ severity: 'info', summary: t('common.confirmed'), detail: t('common.doneDeleted'), life: 3000 });

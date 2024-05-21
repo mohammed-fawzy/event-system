@@ -1,14 +1,24 @@
 <template>
-      <Dialog :visible="visible" modal :header="id ? $t('common.editForm', { name: $t('table.city')}) : $t('common.addNewForm.female', { name: $t('table.city') })"  @update:visible="closeModal" :style="{ width: '50rem' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
-          <Form @submit="onSubmit" v-slot:default="{ errors }">
-            <div class="flex flex-col mb-8">
+      <Dialog :visible="true" modal :header="id ? $t('common.editForm', { name: $t('table.city')}) : $t('common.addNewForm.female', { name: $t('table.city') })"  @update:visible="closeModal" :style="{ width: '50rem' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
+          <ProgressSpinner  v-if="pending && props.id"/>
+          <Form v-else @submit="onSubmit" v-slot:default="{ errors }">
+            <div class="flex justify-between mb-8 gap-9">
+            
+            <div class="flex flex-col basis-2/4">
               <label for="name" class="text-xl font-medium text-label mb-4">{{  $t('common.name') }}</label>
-              <Field as="InputText" name="name" :placeholder="$t('common.enterForm', {name: $t('common.name')})" />
+              <Field as="InputText" name="name" v-model="theData.name" :placeholder="$t('common.enterForm', {name: $t('common.name')})" />
+            </div>
+           
+              <div class="flex flex-col basis-2/4"> 
+                <label for="code" class="text-xl font-medium text-label mb-4">{{ $t('table.code') }}</label>
+                <Field as="InputText" name="code" :placeholder="$t('table.code')" rules="required" v-model="theData.code" :invalid="errors.code"/>
+                <ErrorMessage name="code" class="text-red-500 mt-2"/>
+              </div>
             </div>
             <div class="flex justify-between mb-8 gap-9">
               <div class="flex flex-col basis-2/4"> 
                 <label for="Initials" class="text-xl font-medium text-label mb-4">{{ $t('table.initials') }}</label>
-                <Field as="InputText" name="Initials" :placeholder="$t('table.initials')" rules="required" v-model="theData.initials" :invalid="errors.Initials"/>
+                <Field as="InputText" name="initials" :placeholder="$t('table.initials')" rules="required" v-model="theData.initials" :invalid="errors.Initials"/>
                 <ErrorMessage name="Initials" class="text-red-500 mt-2"/>
               </div>
 
@@ -20,8 +30,13 @@
                 </Field>
               </div>
             </div>
+            <div v-for="error in apiErrors" class="mb-4">
+              <InlineMessage severity="error"> 
+                {{ error.join(' ') }}
+              </InlineMessage>
+            </div>
             <div class="flex justify-center">
-              <Button type="submit" class="bg-primary w-9/12 h-54 font-normal text-xl mt-4">{{ $t('common.create') }}</Button>
+              <Button type="submit" :loading="submiting" class="bg-primary w-9/12 h-54 font-normal text-xl mt-4" :label="$t('common.create')" />
             </div>
           </Form>
       </Dialog>
@@ -51,9 +66,19 @@ let theData = ref({
   country: '',
 })
 
-if (props.id) { // edit
-  const { data } = useApi(`/api/products/${props.id}`);
-}
+
+const { pending, execute } = useApi(`cities/${props.id}`, {
+  immediate: false,
+  transform: (res) => {
+    theData.value = res.data
+  }
+})
+
+onMounted(() => {
+  if (props.id) {
+    execute();
+  }
+})
 
 
 const cities = ref([
@@ -66,24 +91,23 @@ const cities = ref([
 
 const toast = useToast();
 
-const onSubmit = ( value ) => {
-  if (props.id) { // edit
-    theData.value.id = props.id
-    useApi(`/api/products/${props.id}`, 'PUT', theData.value).then((res) => {
-      console.log('res', res);
+let submiting = ref(false);
+const apiErrors = ref([]);
+const onSubmit = async ( value ) => {
+  submiting.value = true;
+  try {
+    await use$Fetch( props.id ? `cities/${props.id}` : 'cities' , { method: props.id ? 'PUT' : 'POST', body: value })
+      submiting.value = false;
       toast.add({ severity: 'success', summary: t('common.Successful'), detail: t('common.UpdatedSuccessfully'), life: 3000 });
       closeModal();
       emit('submit');
-    })
+
+  }
+  catch (error) {
+    submiting.value = false;
+    apiErrors.value = Object.values(error.response._data?.errors);
   }
 
-  useApi('/api/products', 'POST', theData.value).then((res) => {
-    console.log('res', res);
-    toast.add({ severity: 'success', summary: t('common.Successful'), detail: t('common.CreatedSuccessfully'), life: 3000 });
-    closeModal();
-    emit('submit');
-  })
-  
 }
 
 

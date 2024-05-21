@@ -5,7 +5,7 @@
       <p class="font-medium text-blue10 text-xl capitalize">{{ $t(`sideMenu.${routerName}`)}}</p>
       <Button :label="$t('common.addNew')" icon="pi pi-plus" class="bg-primary text-base h-42" @click="visible = true"/>
     </div>
-      <DataTable :value="products" paginator :rows="5">
+      <DataTable :loading="pending" lazy paginator :value="data?.data?.rows" :totalRecords="data?.data?.meta.total" :rows="perPage" @page="handlePageChange">
           <Column field="id" :header="$t('common.id')"></Column>
           <Column field="activityName" :header="$t('table.activityName')">
             <template #body="slotProps">
@@ -15,7 +15,7 @@
               </div>
             </template>
           </Column>
-          <Column field="description" :header="$t('common.description')"></Column>
+          <Column field="specifications" :header="$t('common.specifications')"></Column>
           <Column field="date" :header="$t('common.date')"></Column>
           <Column field="actions" :header="$t('common.action')">
             <template #body="slotProps">
@@ -28,15 +28,28 @@
           </Column>
       </DataTable>
   </div>
-  <Form :visible="visible" @close-modal="closeModal" :id="selectedId" @submit="refresh"/>
+  <Form v-if="visible" @close-modal="closeModal" :id="selectedId" @submit="refresh"/>
   <ConfirmDialog></ConfirmDialog>
 </template>
 
 <script setup>
-import Form from './form.vue'
+const Form = defineAsyncComponent(() => import('./form.vue'))
+
 const { t } = useI18n();
 
-const { data, refresh } = useApi('/api/products');
+let perPage = ref(10);
+let currentPage = ref(1);
+const { pending, data, refresh } = useApi(`activities`, {
+  params: {
+    limit: perPage,
+    page: currentPage
+  },
+});
+
+// Event handler for page change
+const handlePageChange = (event) => {
+  currentPage.value = event.page + 1;
+}
 
 const confirm = useConfirm();
 const toast = useToast();
@@ -74,7 +87,7 @@ const editDeleteMenu = computed(() => [
       acceptLabel: t('common.yes'),
       rejectLabel: t('common.no'),
       accept: () => {
-        useApi('DELETE', `country/${selectedId.value}`).then(() => {
+        use$Fetch(`activities/${selectedId.value}`, { method: 'DELETE'}).then(() => {
           refresh();
           toast.add({ severity: 'info', summary: t('common.confirmed'), detail: t('common.doneDeleted'), life: 3000 });
         })
@@ -94,46 +107,5 @@ const closeModal = () => {
   visible.value = false
   selectedId.value = null
 }
-
-let products = [
-  {
-    id: 1000,
-    activityName: 'Bamboo Watch',
-    description: 'the Description',
-    code: 'BW',
-    country: 'India',
-    initials: 'BW',
-    date: '2019-01-01',
-    nationality: 'India',
-    flag: 'india.png',
-    rating: 5,
-    actions: 'edit, delete'
-  },
-  {
-    id: 1001,
-    activityName: 'Black Watch',
-    description: 'the description',
-    code: 'BW',
-    country: 'India',
-    initials: 'BW',
-    date: '2019-01-01',
-    nationality: 'India',
-    flag: 'india.png',
-    actions: 'edit, delete'
-  },
-  {
-    id: 1002,
-    activityName: 'Blue Band',
-    description: 'the description',
-    code: 'BW',
-    country: 'India',
-    initials: 'BB',
-    date: '2019-01-01',
-    nationality: 'India',
-    flag: 'india.png',
-    actions: 'edit, delete'
-  }
-
-]
 
 </script>

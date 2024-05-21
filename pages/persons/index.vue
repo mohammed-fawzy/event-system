@@ -5,7 +5,7 @@
       <p class="font-medium text-blue10 text-xl capitalize">{{ $t(`sideMenu.${routerName}`)}}</p>
       <Button :label="$t('common.addNew')" icon="pi pi-plus" class="bg-primary text-base h-42" @click="$router.push({path :'/persons/form'})"/>
     </div>
-      <DataTable :value="products" paginator :rows="5" @row-click="onRowClick">
+      <DataTable :loading="pending" lazy paginator :value="data?.data?.rows" :totalRecords="data?.data?.meta.total" :rows="perPage" @page="handlePageChange" @row-click="onRowClick">
           <Column field="id" :header="$t('common.id')"></Column>
           <Column field="name" :header="$t('common.name')">
             <template #body="slotProps">
@@ -40,8 +40,19 @@ let routerName = computed(() => {
   return useRouter().currentRoute.value.name 
 })
 
-// const { data, refresh } = useApi('/api/products');
+let perPage = ref(10);
+let currentPage = ref(1);
+const { pending, data, refresh } = useApi(`persons`, {
+  params: {
+    limit: perPage,
+    page: currentPage
+  },
+});
 
+// Event handler for page change
+const handlePageChange = (event) => {
+  currentPage.value = event.page + 1;
+};
 const toast = useToast();
 
 
@@ -75,10 +86,10 @@ const deleteConfirm = () => {
     acceptLabel: t('common.yes'),
     rejectLabel: t('common.no'),
     accept: () => {
-      useApi('DELETE', `country/${selectedId.value}`).then(() => {
-        refresh();
-        toast.add({ severity: 'info', summary: t('common.confirmed'), detail: t('common.doneDeleted'), life: 3000 });
-      })
+      use$Fetch(`persons/${selectedId.value}`, { method: 'DELETE'}).then(() => {
+          refresh();
+          toast.add({ severity: 'info', summary: t('common.confirmed'), detail: t('common.doneDeleted'), life: 3000 });
+        })
     },
       reject: () => {
       
@@ -96,48 +107,5 @@ const onRowClick = (event) => {
   router.push({path :`/persons/show/${event.data.id}`})
 }
 
-let products = [
-  {
-    id: 1000,
-    name: 'Bamboo Watch',
-    initials: 'BW',
-    city: 'India',
-    street: 'New York',
-    idType: 'passport',
-    email: 'y7GpC@example.com',
-    date: '2019-01-01',
-    nationality: 'India',
-    flag: 'india.png',
-    rating: 5,
-    actions: 'edit, delete'
-  },
-  {
-    id: 1001,
-    name: 'Black Watch',
-    initials: 'BW',
-    city: 'India',
-    street: 'New York',
-    idType: 'passport',
-    email: 'y7GpC@example.com',
-    date: '2019-01-01',
-    nationality: 'India',
-    flag: 'india.png',
-    actions: 'edit, delete'
-  },
-  {
-    id: 1002,
-    name: 'Blue Band',
-    initials: 'BB',
-    city: 'India',
-    street: 'New York',
-    idType: 'passport',
-    email: 'y7GpC@example.com',
-    date: '2019-01-01',
-    nationality: 'India',
-    flag: 'india.png',
-    actions: 'edit, delete'
-  }
-
-]
 
 </script>

@@ -40,4 +40,5 @@ export default {
   address: "العنوان",
   subscription: "الاشتراك",
   register: "تسجيل",
+  specifications: "المواصفات",
 }

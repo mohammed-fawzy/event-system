@@ -13,79 +13,82 @@ import { Title } from '../../../.nuxt/components';
       </div>
       <div class="flex justify-between mb-6">
         <p class="text-blue10">ID:</p>
-        <p class="w-1/2 text-blue6"> 33232323 </p>
+        <p class="w-1/2 text-blue6"> {{ data?.data?.id }} </p>
       </div>
       <div class="flex justify-between mb-6">
         <p class="text-blue10">ID Type:</p>
-        <p class="w-1/2 text-blue6"> 33232323 </p>
+        <p class="w-1/2 text-blue6"> {{ data?.data?.id_type }} </p>
       </div>
       <div class="flex justify-between mb-6">
         <p class="text-blue10">ID Expiration:</p>
-        <p class="w-1/2 text-blue6"> 33232323 </p>
+        <p class="w-1/2 text-blue6"> {{ data?.data?.id_expiration }} </p>
       </div>
       <div class="flex justify-between mb-6">
         <p class="text-blue10">Email Address:</p>
-        <p class="w-1/2 text-blue6"> debra.holt@example.com </p>
+        <p class="w-1/2 text-blue6"> {{ data?.data?.email }} </p>
       </div>
       <div class="flex justify-between mb-6">
         <p class="text-blue10">Phone:</p>
-        <p class="w-1/2 text-blue6"> 33232323343434 </p>
+        <p class="w-1/2 text-blue6"> {{ data?.data?.Phone1 }} </p>
       </div>
       <div class="flex justify-between mb-6">
         <p class="text-blue10">Whatsapp:</p>
-        <p class="w-1/2 text-blue6"> 33232323343434 </p>
+        <p class="w-1/2 text-blue6"> {{ data?.data?.WhatsApp }} </p>
       </div>
       <div class="flex justify-between">
         <p class="text-blue10">CV Resume:</p>
-        <p class="w-1/2 text-blue6"> 33232323343434 </p>
+        <p class="w-1/2 text-blue6"> {{ }} </p>
       </div>
     </div><!-- end card -->
 
     <div class="card text-base border-2 border-dashed border-blue2	">
       <div class="flex justify-between mb-6">
         <p class="text-blue10">Birth:</p>
-        <p class="w-1/2 text-blue6"> 32.32.4545.5 </p>
+        <p class="w-1/2 text-blue6"> {{ data?.data?.birthdate }} </p>
       </div>
       <div class="flex justify-between mb-6">
         <p class="text-blue10">Zip:</p>
-        <p class="w-1/2 text-blue6"> 1004 </p>
+        <p class="w-1/2 text-blue6"> {{ data?.data?.zip }}  </p>
       </div>
       <div class="flex justify-between mb-6">
         <p class="text-blue10">Street:</p>
-        <p class="w-1/2 text-blue6"> 775 Crescent Street </p>
+        <p class="w-1/2 text-blue6"> {{ data?.data?.street_address }}  </p>
       </div>
       <div class="flex justify-between mb-6">
         <p class="text-blue10">URL:</p>
-        <p class="w-1/2 text-blue6"> https://www.google.com </p>
+        <p class="w-1/2 text-blue6"> {{  }}  </p>
       </div>
       <div class="flex justify-between mb-6">
         <p class="text-blue10">Jop Title:</p>
-        <p class="w-1/2 text-blue6"> Web Developer </p>
+        <p class="w-1/2 text-blue6">{{  }}  </p>
       </div>
       <div class="flex justify-between mb-6">
         <p class="text-blue10">Leader SN:</p>
-        <p class="w-1/2 text-blue6"> 33232323 </p>
+        <p class="w-1/2 text-blue6"> {{  }}  </p>
       </div>
       <div class="flex justify-between mb-6">
         <p class="text-blue10">Organization:</p>
-        <p class="w-1/2 text-blue6"> Google </p>
+        <p class="w-1/2 text-blue6"> {{  }}  </p>
       </div>
       <div class="flex justify-between mb-6">
         <p class="text-blue10">City:</p>
-        <p class="w-1/2 text-blue6"> Rio de Janeiro </p>
+        <p class="w-1/2 text-blue6"> {{ data?.data?.WhatsApp }}  </p>
       </div>
       <div class="flex justify-between">
         <p class="text-blue10">Nationality:</p>
-        <p class="w-1/2 text-blue6"> Brazil </p>
+        <p class="w-1/2 text-blue6"> {{ data?.data?.nationality }}  </p>
       </div>
     </div><!-- end card -->
 
   </div>
 </template>
 
-<script>
-const route = useRouter().currentRoute.value
-const theId = route.params.id
+<script setup>
+const route = useRouter()?.currentRoute.value
+const theId = route?.params?.id
 
+
+
+const { data } = await useApi(`persons/${theId}`)
 
 </script>

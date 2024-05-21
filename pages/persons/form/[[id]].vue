@@ -3,7 +3,8 @@
     <i class="pi pi-arrow-left mr-2 rtl:ml-2" @click="$router.go(-1)"></i>
     <div class="text-xl font-medium"> Person Form </div>
   </div>
-  <Form @submit="onSubmit" v-slot:default="{ errors }">
+  <ProgressSpinner  v-if="pending && theId"/>
+  <Form v-else @submit="onSubmit" v-slot:default="{ errors }">
     <div class="container m-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-8">
 
       <div class="flex flex-col"> 
@@ -11,19 +12,19 @@
       </div>
 
       <div class="flex flex-col"> 
-        <CustomeTextInput v-model="theData.firstname" name="first name" :label="$t('form.firstname')" :errors="errors" :rules="'required'"/>
+        <CustomeTextInput v-model="theData.first_name" name="first name" :label="$t('form.firstname')" :errors="errors" :rules="'required'"/>
       </div>
 
       <div class="flex flex-col"> 
-        <CustomeTextInput v-model="theData.lastname" name="last name" :label="$t('form.lastname')" :errors="errors" :rules="'required'"/>
+        <CustomeTextInput v-model="theData.second_name" name="last name" :label="$t('form.lastname')" :errors="errors" :rules="'required'"/>
       </div>
 
       <div class="flex flex-col"> 
-        <CustomeTextInput v-model="theData.surname" name="surname" :label="$t('form.surname')" :errors="errors" :rules="'required'"/>
+        <CustomeTextInput v-model="theData.surName" name="surname" :label="$t('form.surname')" :errors="errors" :rules="'required'"/>
       </div>
 
       <div class="flex flex-col"> 
-        <CustomeTextInput v-model="theData.honor" name="honor" :label="$t('form.honor')" :errors="errors" :rules="'required'"/>
+        <CustomeTextInput v-model="theData.Honor" name="honor" :label="$t('form.honor')" :errors="errors" :rules="'required'"/>
       </div>
 
       <div class="flex flex-col">
@@ -43,19 +44,19 @@
       </div>
 
       <div class="flex flex-col"> 
-        <CustomeTextInput v-model="theData.phone" name="phone" :label="$t('form.phone')" :errors="errors" :rules="'required|numeric'"/>
+        <CustomeTextInput v-model="theData.Phone1" name="phone" :label="$t('common.phone')" :errors="errors" :rules="'required|numeric'"/>
       </div>
 
       <div class="flex flex-col">
-        <CustomeTextInput v-model="theData.whatsapp" name="whatsapp" :label="$t('form.whatsApp')" :errors="errors" :rules="'required|numeric'"/>
+        <CustomeTextInput v-model="theData.WhatsApp" name="whatsapp" :label="$t('form.whatsApp')" :errors="errors" :rules="'required|numeric'"/>
       </div>
 
       <div class="flex flex-col">
-        <CustomeTextInput v-model="theData.street" name="street" :label="$t('form.streetAddress')" :errors="errors" :rules="'required'"/>
+        <CustomeTextInput v-model="theData.street_address" name="street" :label="$t('form.streetAddress')" :errors="errors" :rules="'required'"/>
       </div>
 
       <div class="flex flex-col col-span-2"> 
-        <CustomeTextInput v-model="theData.linkedUrl" name="linkedUrl" :label="$t('form.linkedUrl')" :errors="errors" :rules="'required'"/>
+        <CustomeTextInput v-model="theData.linkedIn" name="linkedUrl" :label="$t('form.linkedUrl')" :errors="errors" :rules="'required'"/>
       </div>
 
       <div class="flex flex-col col-span-2">
@@ -116,7 +117,7 @@
     </div> <!-- end form -->
       <div class="flex justify-end mb-10">
         <Button class="bg-bgcancel text-primary h-48 font-normal text-2xl mt-4 mr-6 rtl:ml-6">{{ $t('common.cancel') }}</Button>
-        <Button type="submit" class="bg-primary h-48 font-normal text-2xl mt-4">{{ $t('common.save') }}</Button>
+        <Button type="submit" class="bg-primary h-48 font-normal text-2xl mt-4" :loading="submiting" :label="$t('common.save')" />
       </div>
   </Form>
 </template>
@@ -128,18 +129,18 @@ const { t } = useI18n();
 
 let theData = ref({
   person_Sn: '',
-  firstname: '',
-  lastname: '',
-  surname: '',
-  honor: '',
+  first_name: '',
+  second_name: '',
+  surName: '',
+  Honor: '',
   email: '',
   birthdate: '',
   gender: '',
   zip: '',
-  phone: '',
-  whatsapp: '',
-  street: '',
-  linkedUrl: '',
+  Phone1: '',
+  WhatsApp: '',
+  street_address: '',
+  linkedIn: '',
   jopTitle: '',
   leader_sn: '',
   organization: '',
@@ -151,9 +152,19 @@ const route = useRouter().currentRoute.value
 const theId = route.params.id
 
 
-  if (theId) { // edit
-      const { data } = useApi(`/api/products/${theId}`);
-    }
+
+const { pending, execute } = useApi(`persons/${theId}`, {
+  immediate: false,
+  transform: (res) => {
+    theData.value = res.data
+  }
+})
+
+onMounted(() => {
+  if (theId) {
+    execute();
+  }
+})
     
     
     
@@ -172,24 +183,24 @@ function onAdvancedUpload(event) {
 }
 
 const toast = useToast();
-const onSubmit = ( value ) => {
-  if (props.id) { // edit
-    theData.value.id = props.id
-    useApi(`/api/products/${props.id}`, 'PUT', theData.value).then((res) => {
-      console.log('res', res);
+
+let submiting = ref(false);
+const apiErrors = ref([]);
+const onSubmit = async ( value ) => {
+  submiting.value = true;
+  try {
+    await use$Fetch( props.id ? `persons/${props.id}` : 'persons' , { method: props.id ? 'PUT' : 'POST', body: value })
+      submiting.value = false;
       toast.add({ severity: 'success', summary: t('common.Successful'), detail: t('common.UpdatedSuccessfully'), life: 3000 });
       closeModal();
       emit('submit');
-    })
+
+  }
+  catch (error) {
+    submiting.value = false;
+    apiErrors.value = Object.values(error.response._data?.errors);
   }
 
-  useApi('/api/products', 'POST', theData.value).then((res) => {
-    console.log('res', res);
-    toast.add({ severity: 'success', summary: t('common.Successful'), detail: t('common.CreatedSuccessfully'), life: 3000 });
-    closeModal();
-    emit('submit');
-  })
-  
 }
 
 

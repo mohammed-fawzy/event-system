@@ -25,9 +25,9 @@
             </div>
             <div class="flex justify-between mb-8 gap-9">
               <div class="flex flex-col basis-2/4"> 
-                <label for="initials" class="text-xl font-medium text-label mb-4">{{ $t('table.code') }}</label>
+                <label for="code" class="text-xl font-medium text-label mb-4">{{ $t('table.code') }}</label>
                 <Field as="InputText" name="code" :placeholder="$t('table.code')" rules="required" v-model="theData.code" :invalid="errors.code"/>
-                <ErrorMessage name="initials" class="text-red-500 mt-2"/>
+                <ErrorMessage name="code" class="text-red-500 mt-2"/>
               </div>
               <div class="flex flex-col basis-2/4">
                 <label for="nationality" class="text-xl font-medium text-label mb-4">{{ $t('common.nationality') }}</label>
@@ -39,7 +39,7 @@
             </div>
             <div v-for="error in apiErrors" class="mb-4">
               <InlineMessage severity="error"> 
-                {{ error }}
+                {{ error.join(' ') }}
               </InlineMessage>
             </div>
             <div class="flex justify-center">
@@ -104,54 +104,19 @@ let submiting = ref(false);
 const apiErrors = ref([]);
 const onSubmit = async ( value ) => {
   submiting.value = true;
-  // useApi(`countries/${props.id}`, 'PUT', theData.value).then((res) => {
-  //   console.log('res', res);
-  //   toast.add({ severity: 'success', summary: t('common.Successful'), detail: t('common.UpdatedSuccessfully'), life: 3000 });
-  //   closeModal();
-  //   emit('submit');
-  // })
-  
+  try {
+    await use$Fetch( props.id ? `countries/${props.id}` : 'countries' , { method: props.id ? 'PUT' : 'POST', body: value })
+      submiting.value = false;
+      toast.add({ severity: 'success', summary: t('common.Successful'), detail: t('common.UpdatedSuccessfully'), life: 3000 });
+      closeModal();
+      emit('submit');
 
-  // console.log('test)
+  }
+  catch (error) {
+    submiting.value = false;
+    apiErrors.value = Object.values(error.response._data?.errors);
+  }
 
-use$Fetch( props.id ? `countries/${props.id}` : 'countries' , { method: props.id ? 'PUT' : 'POST', body: value }).then((response) => {
-  submiting.value = false;
-})
-.catch((error) => {
-  submiting.value = false;
-  console.log('error', error.value);
-})
-  // if (response.status == 201) {
-  //   toast.add({ severity: 'success', summary: t('common.Successful'), detail: t('common.UpdatedSuccessfully'), life: 3000 });
-  //   closeModal();
-  //   emit('submit');
-  // }
-  // else if (response.status == 400) {
-  //   apiErrors.value = Object.values(response.errors);
-  //   console.log('apiErrors', apiErrors.value);
-  // }
-
-
-//   console.log('res', res);
-//   if (error.value.statusCode == 400) {
-//     apiErrors.value = Object.values(error.value.data.errors);
-//     return
-//   }
-//   else {
-//     toast.add({ severity: 'success', summary: t('common.Successful'), detail: t('common.CreatedSuccessfully'), life: 3000 });
-//     closeModal();
-//     emit('submit');
-//   }
-// })
-
-
-// const {data, error} =  useApi('countries', { method: 'POST', body: value })
-
-
-    // toast.add({ severity: 'success', summary: t('common.Successful'), detail: t('common.CreatedSuccessfully'), life: 3000 });
-    // closeModal();
-    // emit('submit');
-  
 }
 
 

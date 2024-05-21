@@ -1,12 +1,18 @@
 <template>
   <div class="card flex justify-center rounded-18px">
-      <Dialog :visible="visible" modal :header="id ? $t('common.editForm', { name: $t('table.interest')}) : $t('common.addNewForm.female', { name: $t('table.interest') })"  @update:visible="closeModal" :style="{ width: '50rem' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
-          <Form @submit="onSubmit" v-slot:default="{ errors }">
+      <Dialog :visible="true" modal :header="id ? $t('common.editForm', { name: $t('table.interest')}) : $t('common.addNewForm.female', { name: $t('table.interest') })"  @update:visible="closeModal" :style="{ width: '50rem' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }">
+          <ProgressSpinner  v-if="pending && props.id"/>
+          <Form v-else @submit="onSubmit" v-slot:default="{ errors }">
               <div class="flex flex-col">
                 <CustomeTextInput v-model="theData.name" name="name" :label="$t('form.name')" :errors="errors" :rules="'required'"/>
               </div>
+              <div v-for="error in apiErrors" class="mb-4">
+              <InlineMessage severity="error"> 
+                {{ error.join(' ') }}
+              </InlineMessage>
+            </div>
             <div class="flex justify-center">
-              <Button type="submit" class="bg-primary w-9/12 h-54 font-normal text-xl mt-4">{{ $t('common.create') }}</Button>
+              <Button type="submit" :loading="submiting" class="bg-primary w-9/12 h-54 font-normal text-xl mt-4" :label="$t('common.create')" />
             </div>
           </Form>
       </Dialog>
@@ -35,30 +41,38 @@ let theData = ref({
   name: '',
 })
 
-if (props.id) { // edit
-  const { data } = useApi(`/api/products/${props.id}`);
-}
+const { pending, execute } = useApi(`interests/${props.id}`, {
+  immediate: false,
+  transform: (res) => {
+    theData.value = res.data
+  }
+})
+
+onMounted(() => {
+  if (props.id) {
+    execute();
+  }
+})
 
 const toast = useToast();
 
-const onSubmit = ( value ) => {
-  if (props.id) { // edit
-    theData.value.id = props.id
-    useApi(`/api/products/${props.id}`, 'PUT', theData.value).then((res) => {
-      console.log('res', res);
+let submiting = ref(false);
+const apiErrors = ref([]);
+const onSubmit = async ( value ) => {
+  submiting.value = true;
+  try {
+    await use$Fetch( props.id ? `interests/${props.id}` : 'interests' , { method: props.id ? 'PUT' : 'POST', body: value })
+      submiting.value = false;
       toast.add({ severity: 'success', summary: t('common.Successful'), detail: t('common.UpdatedSuccessfully'), life: 3000 });
       closeModal();
       emit('submit');
-    })
+
+  }
+  catch (error) {
+    submiting.value = false;
+    apiErrors.value = Object.values(error.response._data?.errors);
   }
 
-  useApi('/api/products', 'POST', theData.value).then((res) => {
-    console.log('res', res);
-    toast.add({ severity: 'success', summary: t('common.Successful'), detail: t('common.CreatedSuccessfully'), life: 3000 });
-    closeModal();
-    emit('submit');
-  })
-  
 }
 
 

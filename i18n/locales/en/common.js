@@ -40,4 +40,5 @@ export default {
   address: "Address",
   subscription: "Subscription",
   register: "Register",
+  specifications: "Specifications",
 }

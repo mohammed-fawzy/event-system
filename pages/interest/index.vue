@@ -5,7 +5,7 @@
       <p class="font-medium text-blue10 text-xl capitalize">{{ $t(`sideMenu.${routerName}`)}}</p>
       <Button :label="$t('common.addNew')" icon="pi pi-plus" class="bg-primary text-base h-42" @click="visible = true"/>
     </div>
-      <DataTable :value="products" paginator :rows="5">
+      <DataTable :loading="pending" lazy paginator :value="data?.data?.rows" :totalRecords="data?.data?.meta.total" :rows="perPage" @page="handlePageChange">
           <Column field="id" :header="$t('common.id')"></Column>
           <Column field="name" :header="$t('common.name')"></Column>
           <Column field="date" :header="$t('common.date')"></Column>
@@ -20,15 +20,28 @@
           </Column>
       </DataTable>
   </div>
-  <Form :visible="visible" @close-modal="closeModal" :id="selectedId" @submit="refresh"/>
+  <Form v-if="visible" @close-modal="closeModal" :id="selectedId" @submit="refresh"/>
   <ConfirmDialog></ConfirmDialog>
 </template>
 
 <script setup>
-import Form from './form.vue'
+const Form = defineAsyncComponent(() => import('./form.vue'))
+
 const { t } = useI18n();
 
-const { data, refresh } = useApi('/api/products');
+let perPage = ref(10);
+let currentPage = ref(1);
+const { pending, data, refresh } = useApi(`interests`, {
+  params: {
+    limit: perPage,
+    page: currentPage
+  },
+});
+
+// Event handler for page change
+const handlePageChange = (event) => {
+  currentPage.value = event.page + 1;
+}
 
 const confirm = useConfirm();
 const toast = useToast();
@@ -66,7 +79,7 @@ const editDeleteMenu = computed(() => [
       acceptLabel: t('common.yes'),
       rejectLabel: t('common.no'),
       accept: () => {
-        useApi('DELETE', `country/${selectedId.value}`).then(() => {
+        use$Fetch(`interests/${selectedId.value}`, { method: 'DELETE'}).then(() => {
           refresh();
           toast.add({ severity: 'info', summary: t('common.confirmed'), detail: t('common.doneDeleted'), life: 3000 });
         })
@@ -87,42 +100,5 @@ const closeModal = () => {
   selectedId.value = null
 }
 
-let products = [
-  {
-    id: 1000,
-    name: 'Bamboo Watch',
-    code: 'BW',
-    country: 'India',
-    initials: 'BW',
-    date: '2019-01-01',
-    nationality: 'India',
-    flag: 'india.png',
-    rating: 5,
-    actions: 'edit, delete'
-  },
-  {
-    id: 1001,
-    name: 'Black Watch',
-    code: 'BW',
-    country: 'India',
-    initials: 'BW',
-    date: '2019-01-01',
-    nationality: 'India',
-    flag: 'india.png',
-    actions: 'edit, delete'
-  },
-  {
-    id: 1002,
-    name: 'Blue Band',
-    code: 'BW',
-    country: 'India',
-    initials: 'BB',
-    date: '2019-01-01',
-    nationality: 'India',
-    flag: 'india.png',
-    actions: 'edit, delete'
-  }
-
-]
 
 </script>

@@ -5,7 +5,7 @@
       <p class="font-medium text-blue10 text-xl capitalize">{{ $t(`sideMenu.${routerName}`)}}</p>
       <Button :label="$t('common.addNew')" icon="pi pi-plus" class="bg-primary text-base h-42" @click="visible = true"/>
     </div>
-      <DataTable :value="products" paginator :rows="5">
+      <DataTable :loading="pending" lazy paginator :value="data?.data?.rows" :totalRecords="data?.data?.meta.total" :rows="perPage" @page="handlePageChange">
           <Column field="id" :header="$t('common.id')"></Column>
           <Column field="name" :header="$t('common.name')"></Column>
           <Column field="idType" :header="$t('common.idType')"></Column>
